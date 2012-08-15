@@ -40,24 +40,69 @@
           </div>
           <div style="float: right; margin-right: 10px; display: none;">
 
-            <a href="http://jadejade.cn/-1" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
+            <a href="http://jadejade.cn/1284882468/page/html/-1" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
           </div>
         </div>
         <div style="padding: 0px;">
-          <h2 class="title">请通过以下方式联系</h2>
-          <h2 class="title">手机　：　15288319095</h2>
-          <h2 class="title">电话　：　0871-8043568</h2>
-          <h2 class="title">ＱＱ　：　601259096</h2>
-          <h2 class="title">地址　：　云南省昆明世代景星珠宝城一楼18号</h2>
+          <h2 class="title">咨询提交后，管理员将以邮件，QQ或电话的形式回访</h2>
 
           <div class="noticediv" id="notice"></div>
+          <% form_for(@contact ,:html =>{:class=>'form'}) do |f| %>
+            <%#= f.error_messages %>
+            <%= f.hidden_field :user_id %>
+            <%= f.hidden_field :ipaddr %>
+          <br />
+            <div class="row">
+              <div class="con">
+                姓名： <%= f.text_field :name  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                电话 ：<%= f.text_field :phone  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                邮件 ：<%= f.text_field :email  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                QQ号：<%= f.text_field :qq  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+
+            <div class="row">
+              <div class="left">咨询：</div>
+              <div class="con">
+                <%= f.text_area :content ,:size =>'60x6' ,:class => 'textarea'  %>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
 
+
+        <div class="row">
+          <div style="text-align:left;padding:5px 3px 0px 93px">
+            <input type="submit" value="提交" name="commit" id="search_submit" class="submit"/>
+          </div>
+        </div>
+
+      <% end %>
     </div>
 
   </div>
 
 </div>
-</div>
-</div>
-　
+<style>
+  #errorExplanation , #errorExplanation li, #errorExplanation p {
+    color:blue;
+  }
+</style>

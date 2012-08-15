@@ -18,8 +18,7 @@ class ProductsController < ApplicationController
 #      proved_serial = split_keyword(params[:proved_serial])
 #      @search.conditions.proved_serial_like = proved_serial
 #    end
-#    @search.order_by ||= :price
-#    @search.order_as ||= :desc
+#    @search
 #    unless params[:keywords].blank?
 #      keywords = split_keyword(params[:keywords])
 #      keywords.each do |keyword|
@@ -40,7 +39,7 @@ class ProductsController < ApplicationController
 #      end
 #    end
 #    @products = @search.all.paginate(:page => params[:page]||1 , :per_page => params[:per_page]||21)
-    @products = @search.page(params[:page] || 1).per(10)
+    @products = @search.page(params[:page] || 1).per(10).order('id desc')
     
 #    @title = " #{@products.try(:first).try(:color).try(:name)}#{@products.try(:first).try(:name)}#{@products.try(:first).try(:sort).try(:name)}#{params[:keywords]} "
 #    @keywords ="#{@products.try(:first).try(:name)} #{@products.try(:first).try(:sort).try(:name)} #{@products.try(:first).try(:color).try(:name)} #{params[:keywords]} "

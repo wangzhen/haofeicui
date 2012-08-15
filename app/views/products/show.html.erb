@@ -91,7 +91,7 @@
 
   <!-- 商品显示 -->
 
-  <div style="width: 760px; height: 528px; top: 50px; left: 242px; z-index: 14;" title="商品详情" class="pdv_class" id="pdv_5826">
+  <div style="width: 760px;   top: 50px; left: 242px; z-index: 14;" title="商品详情" class="pdv_class" id="pdv_5826">
     <div style="overflow: visible; width: 100%;" class="pdv_content" id="spdv_5826">
       <div style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid;" class="pdv_border">
         <div style="height: 25px; margin: 1px; display: none;">
@@ -187,6 +187,17 @@
               </p>
 
               <%= @product.introduction %>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+                         <h3>支付宝收款</h3>
+                 <p>　<%= link_to 'https://me.alipay.com/vwangzhen' , 'https://me.alipay.com/vwangzhen' %></p>
+
+                <h3>工商银行收款</h3>
+                 <p>　用户名:王顺来 帐号 458 069 219 159 0345(工商银行无手续费，请注明收款说明)</p>
+
             </div>
 
             <p style="clear:both">&nbsp;</p>
@@ -206,3 +217,7 @@
 <%#= render :partial => "product_comment" %>
     <p style="clear:both">&nbsp;</p>
 </div>
+          <script type="text/javascript">
+          setTimeout(" $('#content').height($('#spdv_5826').height())",2000);
+          setTimeout(" $('#content').height($('#spdv_5826').height())",10000);
+          </script>

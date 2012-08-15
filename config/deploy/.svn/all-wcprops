@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/367/trunk/userauth/config/deploy
+END
+02.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/367/trunk/userauth/config/deploy/02.rb
+END
+production.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/367/trunk/userauth/config/deploy/production.rb
+END
+staging.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/366/trunk/userauth/config/deploy/staging.rb
+END

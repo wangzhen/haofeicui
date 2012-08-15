@@ -3,7 +3,7 @@
   <%= javascript_include_tag "/javascripts/base" , '/javascripts/common' ,
     '/javascripts/form' ,'/javascripts/blockui' %>
 <% end %>
-<div id="content" style="width: 1002px; height: 341px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+<div id="content" style="width: 1002px; height: 900px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
 
 
   <!-- 网页标题(菜单) -->
@@ -37,46 +37,51 @@
           </div>
           <div style="float: right; margin-right: 10px; display: none;">
 
-            <a href="http://jadejade.cn/1284882468/page/html/-1" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
+            <a href="http://jadejade.cn/" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
           </div>
         </div>
         <div style="padding: 0px;">
 
           <div id="pagecontent" class="page_content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <p>实体店名：佳春长珠宝店&nbsp;&nbsp;地址：云南省<strong>昆明世代景星珠宝城</strong>一楼18号</p>
+            <p><img src="/images/aboutus.jpg" width="600px"/></p>
             <p>本站宗旨： 方便广大新老客户通过网络浏览到本店最新商品信息。</p>
             <p>经营策略：本店经营多年翡翠商品，始终以客户为中心、以诚信为根本。</p>
             <p>本店承诺：为了规范网上交易市场，本站仅销售天然翡翠A货。如售假货，愿承担一切法律责任，承诺如玉恒久。</p>
             <p>联系地址：云南省<strong>昆明世代景星珠宝城</strong>一楼18号</p>
-            <p>联系电话：0871-8043568&nbsp;&nbsp;13888929319&nbsp;&nbsp;邮编：650000</p>
+            <p>联系电话：0871-8043568&nbsp;&nbsp;15288319095&nbsp;&nbsp;邮编：650000</p>
             <p>电子邮箱：haofeicui@126.com &nbsp;&nbsp;QQ：358631733</p>
-            <p>客户QQ一：358631733</p>
+            <p>客户QQ一：601259096</p>
             <p>客户QQ二：1417010580</p>
-            <p>客户QQ三：601259096</p>
+            <p>客户QQ三：358631733</p>
 
 
           </div>
           <script>
 
             $(document).ready(function(){
-              $("#pagecontent").find("img").hide();
-              var w=$("#pagecontent")[0].offsetWidth;
-              $("#pagecontent").find("img").each(function(){
-                $(this).show();
-                if(this.offsetWidth>w){
-                  this.style.width=w + "px";
-                  $().setBg();
-                }
-              });
-
+              //$("#pagecontent").find("img").hide();
+              //var w=$("#pagecontent")[0].offsetWidth;
+              //$("#pagecontent").find("img").each(function(){
+               // $(this).show();
+                //if(this.offsetWidth>w){
+                 // this.style.width=w + "px";
+                 // $().setBg();
+                //}
+             // });
+             $('#content').height(880)
             });
 
           </script>
-
+          <script type="text/javascript">
+          setTimeout(" $('#content').height($('#pagecontent').height() + 50)",2000);
+          setTimeout(" $('#content').height($('#pagecontent').height() + 50)",10000);
+          </script>
         </div>
 
       </div>
 
     </div>
   </div>
+
 </div>
