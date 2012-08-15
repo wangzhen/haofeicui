@@ -130,6 +130,7 @@
 
           <div id="showpages">
             <%#= will_paginate @products   %>
+              <%= render :partial => "/admin/shared/paginate", :locals => {:objects => @products} %>
             <br clear="all" />
             <br />
           </div>

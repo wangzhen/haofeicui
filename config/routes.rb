@@ -52,7 +52,7 @@ Haofeicui::Application.routes.draw do
         get :logout , :on => :collection
     end
     
-    resources :products , :collection => {:select => :get}
+    resources :products  
     resources :product_contacts
     resources :administrators
     resources :authors

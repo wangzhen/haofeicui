@@ -22,7 +22,7 @@ class Contact < ActiveRecord::Base
   before_create :set_serial
   validates_presence_of :email 
   validates_presence_of :content
-  validates_format_of :email, :with => Authentication.email_regex, :message => '邮件必须是正确格式'
+#  validates_format_of :email, :with => Authentication.email_regex, :message => '邮件必须是正确格式'
   
   def set_serial
     self.serial = Time.now.strftime("%Y%m%d%H#{rand(9)}#{rand(9)}")
