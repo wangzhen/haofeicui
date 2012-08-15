@@ -22,7 +22,7 @@ class Admin::ProductsController < Admin::BaseController
 #      @search.conditions.introduction_like = introduction
 #    end
 #
-    @products = @search.page(params[:page]||1).per(20)
+    @products = @search.page(params[:page]||1).per(20).order('id desc')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }

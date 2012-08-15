@@ -19,7 +19,7 @@
     </tr>
  <% @products.each do |product| %>
           <tr class="<%= cycle("even", "odd")%>">
-            <td><%= link_to image_tag(product.try(:product_images).try(:first).try(:image).try(:url).to_s ,:size=>"120x90") , product_path(product)%></td>
+            <td><%#= link_to image_tag(product.try(:product_images).try(:first).try(:image).try(:url).to_s ,:size=>"120x90") , product_path(product)%></td>
             <td><%= product.try(:sort).try(:name) %></td>
             <td><%= product.try(:color).try(:name) %></td>
             <td><%= product.price %></td>
