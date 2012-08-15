@@ -41,9 +41,9 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: wangzhen_haofeicui
+  database: demo02
   pool: 5
   username: root
-  password: 123456
+  password: '123456'
   host: localhost
 

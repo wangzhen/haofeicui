@@ -34,9 +34,9 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  include Authentication
-  include Authentication::ByPassword
-  include Authentication::ByCookieToken
+#  include Authentication
+#  include Authentication::ByPassword
+#  include Authentication::ByCookieToken
 
   #  has_many :roles_users , :class_name => "RolesUser" ,:foreign_key => :user_id,:dependent => :destroy
   #  has_many :roles ,:through=>:roles_users ,:source => :role,:class_name => "Role"
@@ -55,9 +55,9 @@ class User < ActiveRecord::Base
   
   validates_presence_of      :name ,:on => :update
   validates_presence_of  :phone  , :mobile  , :nickname ,:introduction  , :on=>:update
-  
-  validates_format_of       :email,    :with => Authentication.email_regex
-  validates_format_of       :name,     :with => Authentication.name_regex,  :allow_nil => true
+#
+#  validates_format_of       :email,    :with => Authentication.email_regex
+#  validates_format_of       :name,     :with => Authentication.name_regex,  :allow_nil => true
 
   
   validates_length_of       :phone,       :maximum => 20  , :allow_nil => true 

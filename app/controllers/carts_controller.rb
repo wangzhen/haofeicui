@@ -1,6 +1,6 @@
 # coding: utf-8
 class CartsController < ApplicationController
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   before_filter :init_cart
   def index
     @html_title = "购物车首页"

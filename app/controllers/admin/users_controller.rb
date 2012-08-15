@@ -1,7 +1,7 @@
 # coding: utf-8
 class Admin::UsersController < Admin::BaseController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   # render new.rhtml
   def new
     @user = User.new

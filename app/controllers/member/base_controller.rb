@@ -3,7 +3,7 @@ class Member::BaseController < ApplicationController
 #  layout   'admin/base'
 
   before_filter :user_authorize
-  include AuthenticatedSystem
+#  include AuthenticatedSystem
   #
   #    protected
   #
@@ -20,10 +20,10 @@ class Member::BaseController < ApplicationController
 
   def split_keyword(keyword)
     unless keyword.blank?
-      keyword.gsub!(/[　\s\t]+$/o, "")
-      keyword.gsub!(/^[　\s\t]+/o, "")
-      keyword.gsub!(/[　\s\t]+/o, " ")
-      keyword.split(/(\s)/)
+#      keyword.gsub!(/[　\s\t]+$/o, "")
+#      keyword.gsub!(/^[　\s\t]+/o, "")
+#      keyword.gsub!(/[　\s\t]+/o, " ")
+#      keyword.split(/(\s)/)
     end
   end
 end

@@ -1,3 +1,4 @@
+# coding: utf-8
 class Cart
   attr_accessor :items
   attr_accessor :loggin

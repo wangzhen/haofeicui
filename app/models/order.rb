@@ -1,3 +1,4 @@
+# coding: utf-8
 # == Schema Information
 #
 # Table name: orders
@@ -39,8 +40,8 @@ class Order < ActiveRecord::Base
     4 => '已发货-等待买家确认' ,  
     5 => '交易完成'     }
   
-  default_scope :order => 'created_at DESC'
-  named_scope :status ,:conditions=>["status is not null"]
+#  default_scope :order => 'created_at DESC'
+#  named_scope :status ,:conditions=>["status is not null"]
   # 关系
   belongs_to :user
   belongs_to :mailing   # 邮寄类型

@@ -1,3 +1,4 @@
+# coding: utf-8
 require "uuidtools"
 class CartItem
   attr_accessor :id # can not change id after assigned  # 产品ID
