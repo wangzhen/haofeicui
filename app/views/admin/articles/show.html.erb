@@ -1,0 +1,94 @@
+<div class="content">
+  
+  <table class="table">
+    <tr>
+      <th>顺序</th>
+      <th>图片</th>
+      <th>图片大小</th>
+      <th>排序</th>
+      <th>操作</th>
+      
+    </tr>
+    
+    <%  @article.article_images.each do |i| %>
+      <tr>
+        <td><%=h i.sort %></td>
+        <td><%=image_tag i.image.url ,:size=>"60x60" %></td>
+        <td><%=h "#{(i.image_file_size/(1024.0*1024.0)).to_s[0..5]}M(兆)" %></td>
+        <td>
+          <%= link_to_remote((image_tag "/images/sort_up.jpg" ,:size => "10x15"),
+            :url=>product_image_sort_ajax_path(:product_id=>@article.id ,:product_image_id => i.id,:sort => "up"),:method => :get,:before => "disabled_page('true');",:complete => "disabled_page('false');")%>
+          <%= link_to_remote((image_tag "/images/sort_down.jpg",:size => "10x15"),
+            :url=>product_image_sort_ajax_path(:product_id=>@article.id, :product_image_id =>i.id,:sort => "down"),:method => :get,:before => "disabled_page('true');",:complete => "disabled_page('false');") %>
+        </td>
+        <td><%= link_to '删除', admin_article_image_path(i,:product_id=>@article.id), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <%end%>
+        
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="4">
+        <% form_for([:admin, @article_image],:url => upload_admin_articles_path, :html => { :class => :form , :multipart => true}) do |f| %>
+          <%= f.error_messages %>
+          <%= f.hidden_field :article_id , :value=>@article.id %>
+          添加图片  <%=  f.file_field(:image) %>    <%= f.submit '上传' ,:class => :button %>
+        <% end %>
+                        
+                        
+      </td>
+    </tr>
+  </table>
+  
+  
+  <table class="table">
+    <tr class="odd">
+      <td width="60px">分类</td>
+      <td width="200px">  <%=h @article.category.name %></td>
+    </tr>
+    
+    <tr class="odd">
+      <td width="60px">标题</td>
+      <td width="200px">   <%=h @article.title %></td>
+    </tr>
+    <tr class="odd">
+      <td width="60px">副标题</td>
+      <td width="200px">    <%=h @article.subhead %></td>
+    </tr>
+    <tr class="odd">
+      <td width="60px">来源</td>
+      <td width="200px">    <%=h @article.from %></td>
+    </tr>
+    <tr class="odd">
+      <td width="60px">作者</td>
+      <td width="200px">   <%=h @article.author %></td>
+    </tr>
+    <tr class="odd">
+      <td width="60px">摘要</td>
+      <td width="200px">   <%=h @article.summary %></td>
+    </tr>
+    <tr class="odd">
+      <td width="60px">内容</td>
+      <td width="200px">   <%=h @article.body %></td>
+    </tr>
+  </table>
+  
+  <p style="text-align:right;padding:0 50px;">
+    <%= link_to '编辑', edit_admin_article_path(@article) %> |
+    <%= link_to '返回', admin_articles_path %></p>
+  
+  <table class="table">
+    <tr>
+      <th>回复内容</th>
+      <th>回复用户</th>
+    </tr>
+    <%  @article_comments.each do |comment|%>
+      <tr class="odd">
+        <td width="200px"><%=h comment.content %></td>
+        <td width="200px">   <%=h comment.try(:user).try(:name) %></td>
+      </tr>
+    <% end %>
+        
+  </table>
+  <%= will_paginate @article_comments  %>
+  
+</div>

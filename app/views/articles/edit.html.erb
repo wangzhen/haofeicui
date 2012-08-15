@@ -1,0 +1,51 @@
+<h1>编辑文章</h1>
+
+<% form_for([:admin , @article] ,:url => admin_admin_article_path(@article),:html=>{:class => "form"}) do |f| %>
+  <%= f.error_messages %>
+
+  <table class="table">
+    <tbody>
+    <tr class="odd">
+      <td width="60px">标题</td>
+      <td width="200px">    <%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <td width="60px">幅标题</td>
+      <td width="200px">     <%= f.text_field :subhead %></td>
+      <td width=""> </td>
+    </tr>
+    <tr>
+      <td width="60px">来源</td>
+      <td width="200px">     <%= f.text_field :from %></td>
+      <td width=""> </td>
+    </tr>
+      <tr>
+      <td width="60px">分类</td>
+      <td width="200px">    <%= f.select :category_id ,Category.all.map{|c| [c.name,c.id]} %></td>
+      <td width=""> </td>
+    </tr>
+        <tr>
+      <td width="60px">作者</td>
+      <td width="200px">     <%= f.text_field :author %></td>
+      <td width=""> </td>
+    </tr>
+            <tr>
+      <td width="60px">简介</td>
+      <td width="200px">   <%= f.text_field :summary %></td>
+      <td width=""> </td>
+    </tr>
+    
+            <tr>
+      <td width="60px">内容</td>
+      <td width="200px"><%= f.text_area :body %></td>
+      <td width=""> </td>
+    </tr>
+                <tr>
+      <td width="60px"></td>
+      <td width="200px">   <%= f.submit 'Create'  ,:class => "button" %></td>
+      <td width=""> </td>
+    </tr>
+  </table>
+<% end %>
+
+<%= link_to '返回', admin_admin_articles_path %>

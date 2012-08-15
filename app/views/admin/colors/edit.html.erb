@@ -1,0 +1,24 @@
+<h1>Editing color</h1>
+
+<% form_for(@color) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :sort %><br />
+    <%= f.text_field :sort %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @color %> |
+<%= link_to 'Back', colors_path %>

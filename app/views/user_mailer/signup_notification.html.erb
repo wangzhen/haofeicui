@@ -1,0 +1,12 @@
+您的用户信息
+
+  登陆名: <%=h @user.email %>
+  密  码: <%=h @user.password %>
+
+  点击这个 <%= link_to '链接' , @url %> 激活您的用户，
+  如果不能点击请将下的的链接复制到浏览中
+  <%=h @url %>
+  
+<%= render :partial => "company_info" %>
+
+  <%= root_path %>

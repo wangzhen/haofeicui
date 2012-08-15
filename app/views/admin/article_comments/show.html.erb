@@ -1,0 +1,23 @@
+<p>
+  <b>Content:</b>
+  <%=h @article_comments.content %>
+</p>
+
+<p>
+  <b>Ipaddr:</b>
+  <%=h @article_comments.ipaddr %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @article_comments.user %>
+</p>
+
+<p>
+  <b>Article:</b>
+  <%=h @article_comments.article %>
+</p>
+
+
+<%= link_to 'Edit', edit_article_comments_path(@article_comments) %> |
+<%= link_to 'Back', article_comments_path %>

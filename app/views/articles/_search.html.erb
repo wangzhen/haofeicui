@@ -1,0 +1,47 @@
+<% form_for :search ,:url=>articles_path , :html => {:method => :get,:class => "no-floating form"} do |f| %>  
+  <% f.fields_for @search.conditions do |category| %>
+    <table class="table">
+      <tbody>
+        <tr class="odd">
+          <td width="60px">分类 </td>
+          <td width="200px"> 
+          <%= category.select :category_id_is ,Category.all.map{|c|[c.name,c.id]},{:include_blank => true} %></td>
+          <td width="60px">标题</td>
+          <td width="200px"> <%= text_field_tag :title,params[:title],:size => 20,:maxlength => 100 %></td>
+          <td width=""> </td>
+        </tr>
+        <tr class="odd">
+          <td width="60px">副标题</td>
+          <td width="200px">    <%= text_field_tag :subhead,params[:subhead],:size => 25 , :maxlength => 13 %></td>
+          <td width="60px">来源</td>
+          <td width="200px"> <%= text_field_tag :from,params[:from],:size => 25 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr>    
+        <tr class="odd">
+          <td width="60px">作者</td>
+          <td width="200px"><%= text_field_tag :author,params[:author],:size => 25 , :maxlength => 13 %></td>
+          <td width="60px">用户</td>
+          <td width="200px"><%= text_field_tag :user,params[:user],:size => 25 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr> 
+        <tr class="odd">
+          <td width="60px">内容</td>
+          <td width="200px"><%= text_field_tag :body,params[:body],:size => 25 , :maxlength => 13 %></td>
+          <td width="60px">关键字</td>
+          <td width="200px"><%= text_field_tag :keywords,params[:keywords],:size => 25 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr>
+        <tr class="odd">
+          <td width="60px"></td>
+          <td width="200px"></td>
+          <td width="60px">  <%= f.submit "查找",:class=>"button" %></td>
+          <td width="200px"></td>
+          <td width=""> </td>
+        </tr>
+      </tbody>
+    </table>
+  <%end%>
+
+<% end %>
+
+

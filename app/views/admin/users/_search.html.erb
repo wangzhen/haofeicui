@@ -1,0 +1,81 @@
+<% form_for :search ,:url=>admin_users_path , :html => {:method => :get,:class => "no-floating form"} do |f| %>  
+  <% f.fields_for @search.conditions do |user| %>
+    <table class="table">
+      <tbody>
+        <tr class="odd">
+          <td width="60px"><%= User.human_attribute_name("name") %> </td>
+          <td width="200px"> <%= text_field_tag :name ,params[:name],:size => 15 ,:maxlength => 30  %></td>
+          <td width="60px"><%=  User.human_attribute_name("email") %></td>
+          <td width="200px"> <%= text_field_tag :email,params[:email],:size => 20,:maxlength => 100 %></td>
+          <td width=""> </td>
+        </tr>
+        <tr class="odd">
+          <td width="60px"><%=  User.human_attribute_name("nickname") %></td>
+          <td width="200px">    <%= text_field_tag :nickname,params[:nickname],:size => 15 , :maxlength => 13 %></td>
+          <td width="60px"><%=  User.human_attribute_name("introduction") %></td>
+          <td width="200px"> <%= text_field_tag :introduction,params[:introduction],:size => 15 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr>    
+        <tr class="odd">
+          <td width="60px"><%=  User.human_attribute_name("phone") %></td>
+          <td width="200px"><%= text_field_tag :phone,params[:phone],:size => 15 , :maxlength => 13 %></td>
+          <td width="60px"><%=  User.human_attribute_name("mobile") %></td>
+          <td width="200px"><%= text_field_tag :mobile,params[:mobile],:size => 15 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr>  
+        <tr class="odd">
+          <td width="60px"> <%=  User.human_attribute_name("address") %></td>
+          <td width="200px"> <%= text_field_tag :address,params[:address],:size => 15 , :maxlength => 13 %></td>
+          <td width="60px"><%=  User.human_attribute_name("mobile") %></td>
+          <td width="200px"><%= text_field_tag :mobile,params[:mobile],:size => 15 , :maxlength => 13 %></td>
+          <td width=""> </td>
+        </tr>
+        <tr class="odd">
+          <td width="60px"> <%=  User.human_attribute_name("address") %></td>
+          <td width="200px" colspan="3">     <%= Province.human_name %>
+            <%= user.select :province_id_is ,Province.all.map{|c|[c.name,c.id]},{:include_blank => true},
+              :onchange => remote_function(:url =>{:controller=>'/ajax',:action=>"province_select",
+                :model=>"search" ,:replace_city_id =>'search_conditions_city_id_is',:replace_district_id =>'search_conditions_district_id_is'}  ,
+              :with=>"'province_id='+this.value")%>
+            <%= City.human_name %>
+            <%= user.select :city_id_is,@cities.blank? ? [] : @cities.map{|c|[c.name,c.id]},{:include_blank => true} ,
+              :onchange => remote_function(:url =>{:controller=>'/ajax',:action=>"city_select",:model=>"search" ,
+                :replace_district_id =>'search_conditions_district_id_is'}  ,
+              :with=>"'city_id='+this.value") %>
+            <%= District.human_name %>
+            <%= user.select :district_id_is,@districts.blank? ? [] : @districts.map{|d|[d.name,d.id]},{:include_blank => true} %>
+          <%= text_field_tag :address,params[:address],:size => 15 , :maxlength => 13 %>
+</td>
+
+        </tr>
+        <tr class="odd">
+          <td width="60px"> <%=  User.human_attribute_name("address") %></td>
+          <td width="200px"> <%= text_field_tag :address,params[:address],:size => 15 , :maxlength => 13 %></td>
+          <td width="60px">   <%= Role.human_name %>
+            <%user.fields_for user.object.roles do |role|%>
+              <%#= role.text_field :name_like %>
+              <%#= role.select :id_is ,Role.all.each.map{|r| [r.name,r.id]},{:include_blank=>true} %>
+            <%end%></td>
+          <td width="200px">          <% Role.all.each do |role| %>
+              <%= check_box_tag "[role][]",role.id , params[:role].blank? ? false : params[:role].include?(role.id.to_s) %><%= role.name %>
+            <% end %></td>
+          <td width=""> </td>
+        </tr>
+    
+    
+        <tr class="odd">
+          <td width="60px"></td>
+          <td width="200px"></td>
+          <td width="60px"  style="text-align:right;padding-right:50px;" >  <%= f.submit "查找",:class=>"button" %></td>
+          <td width="200px"></td>
+          <td width=""> </td>
+        </tr>
+      </tbody>
+    </table>
+  <%end%>
+
+<% end %>
+
+  <p  style="text-align:right;padding-right:50px;" >
+    <%= link_to t("button.new"), new_admin_user_path(:search=>params[:search]), :class => "button" %>
+  </p>

@@ -1,0 +1,351 @@
+zh:
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "有 1 个错误发生导致「{{model}}」无法被保存。"
+          other: "有 {{count}} 个错误发生导致「{{model}}」无法被保存。"
+        body: "如下字段出现错误："
+      messages:
+        inclusion: "不包含于列表中"
+        exclusion: "是保留关键字"
+        invalid: "是无效的"
+        confirmation: "与确认值不匹配"
+        accepted: "必须是可被接受的"
+        empty: "不能留空"
+        blank: "不能为空字符"
+        too_long: "过长（最长为 {{count}} 个字符）"
+        too_short: "過短（最短为 {{count}} 个字符）"
+        wrong_length: "长度非法（必须为 {{count}} 个字符）"
+        taken: "已经被使用"
+        not_a_number: "不是数字"
+        greater_than: "必须大于 {{count}}"
+        greater_than_or_equal_to: "必须大于或等于 {{count}}"
+        equal_to: "必须等于 {{count}}"
+        less_than: "必须小于 {{count}}"
+        less_than_or_equal_to: "必须小于或等于 {{count}}"
+        odd: "必须为单数"
+        even: "必须为双数"
+        invalid_format: "格式不正确"
+        
+    models:
+      administrator: "管理员"
+      product: 产品
+      contact: 咨询
+      color: 颜色
+      sort: 分类
+      order: "订单"
+      role: "用户角色"
+      district: "地区"
+      order_status: "订单状态"
+      delivery_schedule: "发送时间"
+      city: "城市"
+      picture: "图像"
+      user: "顾客信息"
+      order_line: "订单项"
+      price: "价格"
+      province: "省"
+      product_icon: "产品图标"
+      mailing: "邮递方式"
+      pay_status: "支付状态"
+      category: "产品分类"
+      job: 工作
+      product: 产品
+      article: "体验谈"
+      news: "新闻"
+      article admin: "体验谈"
+      category: "目录"
+      product picture: "产品图片"
+      products_sub_product: "产品颜色"
+      review: "产品评论"
+      color: "种色"
+      sort: "种类"
+
+    attributes:
+      administrator:
+        name: 登陆名
+        password: 密码
+        password_confirmation: 确认密码
+      color:
+        name: 名称
+        sort: 排序
+      sort:
+        name: 名称
+        sort: 排序
+
+      product:
+        name: "商品名"
+        serial: "商品编号"
+        sort_id: "种类"
+        color_id: "种色"
+        rank: "商品等级"
+        state: "状态"
+        proved_serial: "证书编号"
+        user_id: "用户"
+        price: "价格"
+        current_price: 当前价格
+        picture: "写真"
+        unit: "单位"
+        category_id: "分类"
+        sub_category: "子分类"
+        user_id: "客户"
+        description: "商品说明"
+        serial: 商品编号
+        introduction: 商品介绍
+        sub_serial: Sub商品编号
+        sub_name: Sub商品名字
+        memo: 备注
+        is_public: 公开
+        hits: 点击量
+        image: 产品图片
+        deleted_at: 删除时间 
+      user:
+        phone: "固定电话"
+        introduction: "介绍"
+        introduction: "介绍"
+        customer_type_id: "客户类别"
+        customer_type: "客户类别"
+        tel: "电话"
+        name: "商户名"
+        email: Email地址
+        password: "密码"
+        password_confirmation: "确认密码"
+        fax: "传真"
+        mobile: "移动电话"
+        address: "地址"
+        birthday: "生日"
+        locale: "语言"
+        gender: "性别"
+        joined_on: "入会日期"
+        postal_code: "邮政编码"
+        full_district_name: "地区"
+        alphabet: "姓名(拼音)"
+        nickname: "昵称"
+        job_id: "职业"
+        job: "职业"
+        province_id: "省"
+        province: "省"
+        is_recieve: "Email接收"
+        salt: "加密"
+        remember_token: "自动登录关键字"
+        remember_token_expires_at: "关键的最后期限自动登录"
+        activation_code: "关键帐户启动"
+        activated_at: "帐户启动时间"
+        city_id: "市"
+        city: "市"
+        district_id: "区"
+        district: "区"
+        memo: 备注
+        deleted_at: 删除时间
+      sessions:
+        session: 会话id
+        session_data: 会话时间
+      prices:
+        product_id: "商品"
+        product_type_id: "商品类型"
+        price: "单价"
+        deleted_at: "删除时间"
+      sub_product:
+        product: "商品"
+        sub_name: "名称"
+        sub_serials: "sub商品编号"
+        deleted_at: "删除时间"
+      product_icon:
+        name: "名字"
+        picture_name: "图片名"
+      products_product_icons:
+        product: "商品"
+        product_icon: "商品Icon"
+      review:
+        product_id: "商品"
+        name: "名字"
+        age: "年龄"
+        job: "职业"
+        job_id: "职业"
+        content: "内容"
+        public_content: "公开内容"
+        is_public: "公开Flag"
+        deleted_at: "删除时间"
+        created_at: "创建时间"
+      contact:
+         serial: "序列号"
+         name: "名字"
+         email: "邮件"
+         tel: "电话"
+         content: "内容"
+      review_icon:
+        name: "名字"
+        picture_name: "图片名"
+      reviews_review_icons:
+        review: "复审"
+        review_icon: "复审icon"
+      job:
+        name: "职业"
+      categories:
+        name: "名字"
+        parent: "父目录"
+        contents: "说明"
+        picture: "图片"
+        is_public: "公开Flag"
+      category:
+        name: "名字"
+        parent: "父目录"
+        contents: "说明"
+        picture: "图片"
+        is_public: "公开Flag"
+      province:
+        name: "名字"
+        is_public: "公开Flag"
+      cities:
+        name: "名字"
+        province: "省"
+        is_public: "公开Flag"
+      districts:
+         name: "名字"
+         city: "市"
+         is_public: "公开Flag"
+      recommendations:
+        category: "分类"
+        product: "商品"
+        content: "内容"
+      new:
+        title: "标题"
+        url:  "路径"
+        content: "内容"
+        is_public: "公开Flag"
+        released_at: "公开时间"
+        deleted_at: "删除时间"
+        created_at: "创建时间"
+      order:
+        serial: "订单号"
+        delivery_schedule_date: "预定发送日"
+        delivery_schedule_id: "预定发送时间"
+        ordered_on: "订单日期"
+        user: "顾客姓名"
+        user_name: "收件人"
+        total: "金额"
+        completed_on: "完成日期"
+        memo: "备注"
+        address: "地址"
+        tel: "电话"
+        postal_code: "邮政编码"
+        fax: "传真"
+        adjustment: "调整额"
+        mobile: "移动电话"
+        full_address:  "地址"
+        email: "电子邮箱"
+        city_id: "城市"
+        district_id: "地区"
+        order_lines_product: "订单项产品"
+        order_lines_quantity: "订单项数量"
+        order_lines: "订单项"
+        created_at: "受注日"
+        status_id: "订单状态"
+        subtotal: "小计"
+        mailing: "邮递"
+        payment: "付款方式"
+        mailing: "邮递方式"
+        full_district_name: "区域"
+        province_id: "省"
+        deleted_at: "删除日期"
+        full_city_name: "区域"
+        user_remark: "用户备注"
+        admin_remark: "管理员备注"
+        phone: "手机"
+        status: "订单状态"
+      order_line:
+        name:  "商品名"
+        quantity: "数量"
+        price: "单价"
+        subtotal: "合计"
+        order: "订单"
+        product: "商品"
+        sort: "种类"
+        color: "颜色"
+        remark: "备注"
+      pictures:
+        name: "图像名"
+        image_file_name: "图像文件"
+        image_content_type: "图片类型"
+        image_file_size: "图片大小"
+        image_updated_at: "图片修改时间"
+      
+      mail_task:
+        sender: "送件人"
+        subject: "主题"
+        locale: "语言"
+        content: "邮件正文"
+        created_at: "创建日期"
+        sent_on: "发送于"
+        mails_count: "邮件数量"
+        completed: "已发送"
+      mail:
+        mail_task: "Email"
+        user: "会员"
+      administrators:
+        name: "名字"
+        salted_password: "密码"
+        salt: "加密密码"
+      customer_types:
+        name: "名字"
+        memo: "备注"
+      product_types:
+         name: "名字"
+         memo: "备注"
+      delivery_schedules:
+         name: "名字"
+      forgotten_passwords:
+        user: "会员"
+        reset_code: "重置密码"
+        expiration_date: "有效期"
+      order_status:
+        name: "名字"
+      article:
+        user: "会员"
+        product: "商品"
+        title: "标题"
+        content: "内容"
+        memo1: "问题1"
+        memo2: "问题2"
+        nickname: 昵称
+        created_at: 创建时间
+        age: 发表人年龄
+      article_admin:
+         user: "会员"
+         product: "商品"
+         product_id: "商品"
+         job: "职业"
+         job_id: "职业"
+         title: "标题"
+         content: "内容"
+         is_public: "公开Flag"
+         nickname: 昵称
+         age: 年龄
+         created_at: 文章创建时间
+         picture_id: 图片
+         picture: 图片
+          
+      price:
+          product_id: "产品"
+          product_type_id: "产品类型"
+          price: "价格"
+      forgotten_password:
+          email: "邮件"
+          password: "密码"
+      product_picture:
+          image:  "图片"
+          name: "名称"
+          is_first: "首图"
+        
+
+
+
+
+
+
+
+
+
+
+
+

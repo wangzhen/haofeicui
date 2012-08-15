@@ -1,0 +1,176 @@
+<% form_for [:admin,@order] ,:url=>path,:html=>{:class => "form"} do |f|  %>
+  <%= error_messages_for :order %>
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table">
+    <tbody>
+      <tr>
+        <td><label><%= Order.human_attribute_name("serial") %></label></td>
+        <td><%=  @order.serial %></td>
+        <td><label for="order_user_id"><%= Order.human_attribute_name("user") %></label></td>
+        <td width="15%">
+          <%= @order.user.blank? ? @order.user_name : @order.try(:user).try(:name) %>
+        </td>
+        <td><%= Order.human_attribute_name("mailing")  %></td>
+        <td><%= @order.mailing %></td>
+        <td><%= Order.human_attribute_name("status")  %></td>
+        <td><%= @order.status %>&nbsp;</td>
+        <td><%= Order.human_attribute_name("payment") %></td>
+        <td><%=  @order.payment%>&nbsp;</td>
+      
+      </tr>
+      <tr>
+        <td><label for="order_delivery_schedule_date"><%= Order.human_attribute_name("delivery_schedule_date") %></label></td>
+        <td>
+        <%= f.calendar_date_select :delivery_schedule_date, :size => 10, :year_range => [Time.now.year, 1.years.from_now.year], :valid_date_check => "date.stripTime() >= (new Date()).stripTime()", :maxlength => 10  ,:onkeydown=>'return false' %>
+        <td><label for="order_completed_on"><%= Order.human_attribute_name("completed_on") %></label></td>
+        <td>
+          <%= f.calendar_date_select :completed_on, :size => 18, :maxlength => 10 ,:onkeydown=>'return false'  %>
+        </td>
+      </tr>
+    
+  </tbody></table>
+
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="list" id="recipient">
+    <tbody>
+      <tr>
+        <td>发件人信息</td>
+        <% if action_name == "new" %>
+          <td><%= link_to_remote "顾客信息Copy",:url => copy_user_info_ajax_path(:type => "r"),:method => :get,:with=>"'user_id='+$('user_id').value" %></td>
+        <% else %>
+          <% unless @order.user.blank? %>
+            <td><%= link_to_remote "顾客信息Copy",:url => copy_user_info_ajax_path(:type => "r"),:method => :get,:with=>"'user_id='+$('user_id').value" %></td>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= Order.human_attribute_name("user_name") %></td>
+        <td><%= f.text_field :user_name,:size=>8 %></td>
+        <td>
+          <%#= Province.human_name %>
+        </td>
+        <td>
+          <%#= select_country_city_province("order","order") %>
+        </td>
+        <td><%= City.human_name %></td>
+        <td><%= f.select :city_id,@cities.blank? ? [] : @cities.map{|c|[c.name,c.id]} %></td>
+        <td><%= District.human_name %></td>
+        <td><%= f.select :district_id,@districts.blank? ? [] : @districts.map{|d|[d.name,d.id]} %></td>
+        <td>
+          <%= Order.human_attribute_name("address") %>
+        </td>
+        <td><%= f.text_field :address,:size=>15 , :maxlength => 100%></td>
+      </tr>
+      <tr>
+        <td><%= Order.human_attribute_name("postal_code") %></td>
+        <td><%= f.text_field :postal_code,:size=>11, :maxlength => 10 %></td>
+        <td><%= Order.human_attribute_name("phone")  %></td>
+        <td><%= f.text_field :phone,:size=>11,  :maxlength => 30 %></td>
+        <td><%= Order.human_attribute_name("mobile")  %></td>
+        <td><%= f.text_field :mobile,:size=>11,  :maxlength => 30 %></td>
+        <td><%= Order.human_attribute_name("fax")  %></td>
+        <td><%= f.text_field :fax,:size=>11 ,  :maxlength => 30%></td>
+        <td><%= Order.human_attribute_name("email") %></td>
+        <td><%= f.text_field :email,:size=>11,:maxlength=>30 %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="list">
+    <tbody>
+      <tr>
+        <td>收件人信息</td>
+        <% if action_name == "new" %>
+          <td><%= link_to_remote "顾客信息Copy",:url => copy_user_info_ajax_path(:type => "s"),:method => :get,:with=>"'user_id='+$('user_id').value" %></td>
+        <% else %>
+          <% unless @order.user.blank?%>
+            <td><%= link_to_remote "顾客信息Copy",:url => copy_user_info_ajax_path(:type => "s"),:method => :get,:with=>"'user_id='+$('user_id').value" %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    
+    </tbody>
+  </table>
+
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="padding: 5px;">
+    <tbody><tr>
+        <td width="50%">  备注(客户预留)</td>
+        <td>  备注(管理员预留)</td>
+      </tr>
+      <tr>
+        <td><%= f.text_area :user_remark,:size=>"30x3",  :maxlength => 200%></td>
+        <td><%= f.text_area :admin_remark,:size=>"30x3",  :maxlength => 200 %></td>
+      </tr>
+    
+  </tbody></table>
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="list">
+    <tbody><tr>
+        <td colspan="8">  金额</td>
+      </tr>
+      <tr>
+        <td><%= Order.human_attribute_name("payment_commition") %></td>
+        <td><%#= f.text_field :payment_commition,:readonly=>true ,:size=>8%>元</td>
+        <td><%= Order.human_attribute_name("mailing_commition") %></td>
+        <td><%#= f.text_field :mailing_commition,:readonly=>true ,:size=>8%>元</td>
+      </tr>
+      <tr>
+        <td><label><%= Order.human_attribute_name("adjustment") %></label></td>
+        <td>
+        <%=  f.text_field :adjustment, :size => 8, :onchange => "updateSummary()", :maxlength => 6 , :onkeyup=>"this.value = this.value.replace(/[^-\\d\.]*/g,'')"%>
+        <td><%= t(".subtotal") %></td>
+        <td id="subtotal"><%= number_to_currency f.object.subtotal %></td>
+        <td><%=  t(".total") %></td>
+        <td id="total"><%= number_to_currency f.object.total %></td>
+      </tr>
+  </tbody></table>
+  <p class="buttons">
+    <%#= link_to_function t(".add_new_line"), "addNewOrderLine('order-lines', '{new_admin_order_line_path}')", :class => "button" %>
+    <%= link_to_remote '添加订单明细',
+      :update => "order-lines", 
+      :url => new_admin_order_line_path ,
+      :position => :bottom 
+  %>
+    <%= link_to_remote t(".recalculate"), :url => 'summary_admin_order_path(@order)', :method => :get, :html => { :class => "button" } unless @order.new_record? %>
+  </p>
+  <!-- Order lines editor -->
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" id="order-lines" class="list">
+    <tbody>
+      <tr>
+        <th><%= Product.human_attribute_name("name") %></th>
+        <th><%= OrderLine.human_attribute_name("color") %></th>
+        <th><%= OrderLine.human_attribute_name("sort") %></th>
+        <th><%= OrderLine.human_attribute_name("quantity") %></th>
+        <th><%= Product.human_attribute_name("price") %></th>
+        <th><%= OrderLine.human_attribute_name("remark") %></th>
+        <th>操作</th>
+      </tr>
+      <%  f.fields_for :order_lines do |line| %>
+        <tr class="order_line" id="order_line_<%= line.object.id %>">
+      
+          <td><%= line.text_field :name , :size => 8,:readonly => true %></td>
+          <td><%= line.text_field :color , :size => 5 ,:readonly => true %></td>
+          <td><%= line.text_field :sort  , :size => 5 ,:readonly => true %></td>
+          <td><%= line.text_field :quantity, :size => 3, :class => "quantity", :onchange => "updateSummary()", :maxlength => 3 %></td>
+          <td class="subtotal"><%= number_to_currency(line.object.subtotal) %></td>
+          <td><%= line.text_field :remark %></td>
+          <td>
+            <% if OrderLine.find_by_id(line.object.id) %>
+              <%= link_to_remote t("button.delete"), :url => "[:admin, @order, line.object]", :method => :delete, :confirm => t("confirmation.delete") %>
+            <% else %>
+              <%= link_to_function t("button.delete"), "$(this).parentNode.parentNode.remove(); updateSummary();" %>
+            <% end %>
+            <%= line.hidden_field :name %>
+            <%= line.hidden_field :product_id %>
+            <%= line.hidden_field :sort %>
+            <%= line.hidden_field :color %>
+          </td>
+        </tr>
+    
+      <% end %>
+                        
+  </tbody></table>
+  <p class="buttons center">
+    <%= f.submit t("button.save") %>
+    <% unless @order.new_record? %>
+      <%= link_to t("button.delete"), [:admin, @order], :method => :delete, :class => "button" %>
+      <%= link_to "PDF Invoice", admin_order_path(@order, :format => :pdf), :class => "button", :target => "_blank" %>
+    <% end %>
+  </p>
+<% end %>

@@ -1,0 +1,27 @@
+<%
+name= options[:name].blank? ? "city_id" :options[:name]
+district_id = options[:district_id].blank? ? "district_id" :options[:district_id]
+replace_district_id =model + "_" + district_id
+if model == 'search'
+  replace_district_id =model + "_conditions_" + district_id + "_is"
+end
+options.delete('district_id')
+options.delete('name')
+options.delete('onchange')
+html_options[:onchange] = remote_function(
+  :url =>{:controller=>'ajax',
+    :action=>"city_select",
+    :model=>model,
+    :name=>name,
+    :district_id =>district_id ,
+    :replace_district_id=>replace_district_id}  ,
+  :with=>"'city_id='+this.value")%>
+<% if model == 'search' %>
+  <%= cities.blank? ? select(model+"[conditions]","city_id_is",{},{:include_blank=>true} ,html_options)  : collection_select(model+"[conditions]","city_id_is",cities,"id","name",{:include_blank=>true},html_options) %>
+<%else%>
+  <%= cities.blank? ? select(model,name,{},{:include_blank=>true} ,html_options)  : collection_select(model,name,cities,"id","name",{:include_blank=>true},html_options) %>
+<%end%>
+
+
+<% #select("post", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true })%>
+<%#= cities.blank? ? select(model+"[conditions]","",options)  : collection_select(model+"[conditions]","city_id_is",cities,"id","name",options) %>

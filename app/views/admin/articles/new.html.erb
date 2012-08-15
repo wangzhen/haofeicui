@@ -1,0 +1,5 @@
+<div id="main">
+  <h2>添加新文章</h2>
+  <%= render :partial => "form" ,:locals => {:path => admin_articles_path} %>
+  <%= link_to '返回', admin_articles_path %>
+</div>

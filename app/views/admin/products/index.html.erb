@@ -1,0 +1,37 @@
+<div id="main">
+  <h2><%= t('h2.products') %></h2>
+  
+  <%= render :partial=>"/admin/products/search" , :locals=>{:url =>admin_products_path} %>
+  <div class="btn_t btn_add">
+    <input type="button" class="btn_s" value="<%= t('labels.new') %>" onclick="location.href='/admin/products/new'"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+
+  <table class="data2 order-table">
+    <tr>
+          <th class="first">图片</th>
+          <th><%= sort_link(@search , :sort_id ,:text=>'种类') %></th>
+          <th><%=  sort_link(@search ,:color_id  ,:text=>'颜色') %></th>
+          <th><%=  sort_link(@search ,:price ,:text=>'价格') %></th>
+          <th><%=  sort_link(@search ,:rank ,:text=>'等级') %></th>
+          <th><%=  sort_link(@search ,:serial ,:text=>'编号') %></th>
+          <th><%=  sort_link(@search ,:proved_serial ,:text=>'证书编号') %></th>
+          <th class="last"> 操作 </th>
+    </tr>
+ <% @products.each do |product| %>
+          <tr class="<%= cycle("even", "odd")%>">
+            <td><%= link_to image_tag(product.try(:product_images).try(:first).try(:image).try(:url).to_s ,:size=>"120x90") , product_path(product)%></td>
+            <td><%= product.sort.name %></td>
+            <td><%= product.color.name %></td>
+            <td><%= product.price %></td>
+            <td><%=h Product::RANK[product.rank] %></td>
+            <td><%= product.serial %></td>
+            <td><%= product.proved_serial %></td>
+            <td class="last"><%= link_to '详细', admin_product_path(product) %>|
+              <%= link_to '编辑', edit_admin_product_path(product) %>|
+              <%= link_to '删除', admin_product_path(product), :confirm => '确认删除?', :method => :delete %></td>
+          </tr>
+        <%end%>
+  </table>
+          <%#= will_paginate @products  %>
+</div>
+

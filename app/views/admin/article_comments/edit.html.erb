@@ -1,0 +1,29 @@
+<h1>Editing article_comments</h1>
+
+<% form_for(@article_comments) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @article_comments}  %>
+
+
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :ipaddr %><br />
+    <%= f.text_field :ipaddr %>
+  </p>
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :article %><br />
+    <%= f.text_field :article %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @article_comments %> |
+<%= link_to 'Back', article_comments_path %>

@@ -1,0 +1,43 @@
+<div class="content">
+<h1><%= t(".title") %></h1>
+<%= render :partial => "admin/orders/search" %>
+<table class="table" <%= table_attrs %>>
+       <%  with_options(:scope => "activerecord.attributes.order") do |t_order| %>
+         <tr>
+    <th><%= order_by_link :serial,:text=>t_order.t(:serial) %></th>
+    <th><%= order_by_link [:city_id,:district_id],:text=>District.human_name %></th>
+    <th><%= order_by_link :user_name,:text=>t_order.t(:user_name) %></th>
+    <th><%= order_by_link :phone,:text=>Order.human_attribute_name("phone") %></th>
+    <th><%= order_by_link :total,:text=>t_order.t(:total) %></th>
+    <th><%= order_by_link :delivery_schedule_date,:text=>t_order.t(:delivery_schedule_date) %></th>
+    <th><%= order_by_link :payment,:text=>t_order.t(:payment) %></th>
+    <th><%= order_by_link :status,:text=>Order.human_attribute_name(:status) %></th>
+    <th><a href="#">操作</a></th>
+    </tr>
+  
+  <% end %>
+  
+  <% @orders.each do |order|  %>
+    <tr class="<%= cycle("","","even","even") %>">
+      <td><%= h order.serial %></td>
+      <td><%= h order.full_city_name %></td>
+      <td><%= h order.user_name %></td>
+      <td><%= h order.phone %></td>
+      <td><%= h number_to_currency(order.total) %></td>
+      <td><%= parse_date order.delivery_schedule_date %></td>
+      <td> <%= h order.try(:payment) %></td>
+      <td id="order_status_<%= order.id %>">
+        <%#= order_status_select_tag(order) %>
+        <%= image_tag 'loader.gif', :size => '14x14', :id => "loader_#{order.id}", :style => 'display: none;' %>
+      </td>
+      <td>
+        <%= link_to t("button.delete"), admin_order_path(order,:name=>params[:name] , :user_name_show=>params[:user_name_show],:serial=>params[:serial] ,:search=>params[:search]), :method => :delete,:confirm => "are you sure?" %>
+        <%=  link_to t("button.edit"), edit_admin_order_path(order,:name=>params[:name] , :user_name_show=>params[:user_name_show],:serial=>params[:serial] , :search=>params[:search]) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @orders %>
+
+</div>

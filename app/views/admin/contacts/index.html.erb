@@ -1,0 +1,36 @@
+<h1>Listing contacts</h1>
+
+<table>
+  <tr>
+    <th>Serial</th>
+    <th>Phone</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Qq</th>
+    <th>Content</th>
+    <th>Reply</th>
+    <th>Ipaddr</th>
+    <th>User</th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%=h contact.serial %></td>
+    <td><%=h contact.phone %></td>
+    <td><%=h contact.name %></td>
+    <td><%=h contact.email %></td>
+    <td><%=h contact.qq %></td>
+    <td><%=h contact.content %></td>
+    <td><%=h contact.reply %></td>
+    <td><%=h contact.ipaddr %></td>
+    <td><%=h contact.user_id %></td>
+    <td><%= link_to 'Show', admin_contact_path(contact) %></td>
+    <td><%= link_to 'Edit', edit_admin_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', admin_contact_path(contact), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate  @contacts %>
+<br />
+
+<%= link_to 'New contact', new_contact_path %>

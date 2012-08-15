@@ -1,0 +1,56 @@
+<div id="main">
+  <h2><%= t('h2.sorts') %></h2>
+
+  <div class="btn_t btn_add">
+   <% form_for([:admin , @sort] , :html=> {:class => 'form'}) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @sort}  %>
+  <p>
+    名称：
+    <%= f.text_field :name %>
+    <%= f.submit '添加' ,:class =>'button' %>
+  </p>
+<% end %>
+  </div>
+
+  <table class="data2 order-table">
+    <tr>
+      <th><%= Sort.human_attribute_name('id') %></th>
+      <th><%= Sort.human_attribute_name('name') %></th>
+      <th><%= Sort.human_attribute_name('sort') %></th>
+      <th><%= t('labels.operate') %></th>
+    </tr>
+
+  <% @sorts.each do |sort| %>
+    <tr>
+      <td><%=h sort.sort %></td>
+      <td><%=h sort.name %></td>
+      <td>
+        <%= link_to((image_tag "/images/sort_up.jpg" ,:size => "10x15"),sort_sort_ajax_path(:sort_id => sort.id,:sort => "up"),:remote => :true , :method => :get)%>
+        <%= link_to((image_tag "/images/sort_down.jpg",:size => "10x15"),sort_sort_ajax_path(:sort_id => sort.id,:sort => "down"),:remote => :true , :method => :get)%>
+      </td>
+      <td>
+          <%= link_to_function t('labels.update'), "$('sort#{sort.id}').toggle()" %>|
+      <%= link_to t('labels.delete'), admin_sort_path(sort), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+
+
+      <% form_for([:admin ,sort], :html=> {:class => 'form'}) do |f| %>
+
+        <tr id="sort<%=  sort.id %>" style ='display:none' class = 'form'>
+        <td><%=h sort.sort %></td>
+        <td>
+          <%= f.text_field :name,:class =>'text_field' , :size => 3 %>
+        </td>
+        <td>
+          <%= f.text_field :description,:class =>'text_field'  , :size => 3 %>
+        </td>
+        <td>
+          <%= f.submit '修改' ,:class =>'button' %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+</div>
+
+

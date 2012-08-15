@@ -1,0 +1,48 @@
+<div id="block-lists" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active "><a href="#block-tables">购物车</a></li>
+      <li><a href="#block-tables">更多产品</a></li>
+    </ul>
+    <div class="clear">   </div>
+  </div>
+  <div class="content">
+    <div class="inner">
+      
+      <% form_for @cart,:url=>cart_path,:html => {:class=>'form' ,:method=>:put,:id=>'cart_form'} do |f| %>
+        <table  class="table" >
+          <tr id="head">
+            <th id="picture">商品画像</th>
+            <th id="name">商品名称</th>
+            <th id="price">贩卖金额</th>
+            <th id="amount">数量</th>
+            <th id="input">变更</th>
+            <th id="subtotal">小计</th>
+          </tr>
+          <% for item in @cart.items %>
+            <tr>
+              <td><%= link_to image_tag(item.product.first_list_image,:size=>"80x80"),product_path(item.product)%></td>
+              <td><%= link_to item.product.name,product_path(item.product) %> <br/><strong></strong></td>
+              <td><%=item.product.price %></td>
+              <td><%= text_field_tag "items[#{item.id}]", item.quantity, :size => 2, :maxlength => 2 %><br/><br/>
+              <input type="button" value="改变" class="button"  onclick="$('cart_form').submit();"/></td>
+              <td><%= link_to "削除",cart_item_path(item.item_id) , :method => :delete,:confirm => "are you sure to delete?" %> </td>
+              <td><%=  %></td>
+            </tr>
+          <% end %>
+          <tr style="line-height:8px;">
+          <td id="total" colspan="5">合计金额</td>
+          <td><%= @cart.subtotal%></td>
+          <tr/>
+          <tr style="line-height:8px;">
+          <td id="total" colspan="3"></td>
+            <td colspan="3"><input type="submit" value='修改'  class="button" onclick="$('cart_form').submit();"/> 
+            <input type="button" value='提交'  class="button" onclick="document.location.href ='/orders/new'"/></td>
+          <tr/>
+        </table>
+      
+      <% end %>
+    </div>
+  </div>                               
+</div>    
+

@@ -1,0 +1,12 @@
+<!-- 分类的子分类列表-->
+<%if object == "search"%>
+ <%= categories.blank? ? "<a  style='background:transparent none repeat scroll 0 0;' id ='category_children'> </a>" : collection_select(object+'[conditions]',"category_id_is",categories,"id","name" ,{:include_blank=>true}, :id=>"category_children") %>
+ <% elsif object == "recommendation" %>
+ <%= categories.blank? ? "<a id ='category_children'> </a>" : collection_select(object,'category_id',categories,"id","name",{:include_blank => true} , :id=>"category_children" ,
+   :onchange =>remote_function(:url =>{:controller=>'/ajax',:action=>"product_decided_by_category_select"} , :with=>"'subcategory_id='+this.value") ) %>
+<%else%>
+  <%= categories.blank? ? "<a id ='category_children'> </a>" : collection_select(object,'category_id',categories,"id","name",{:include_blank => true} , :id=>"category_children") %>
+  <%#= categories.blank? ? "<a id ='category_children'> </a>" : select_tag("#{object}[category_id]",options_for_select(categories.map{|p|[p.name,p.id]}) , :id=>"category_children") %>
+  <%#= select_tag "test", :style=>'display:none' %>
+<%end%>
+

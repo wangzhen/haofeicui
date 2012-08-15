@@ -1,0 +1,32 @@
+
+<%= form_for  @search ,:html => {:class => "no-floating form"} do |f| %>
+  <table class="table">
+    <tbody>
+
+        <tr class="odd">
+          <td> <%=  Product.human_attribute_name("proved_serial") %>
+            <%= text_field_tag :proved_serial,params[:proved_serial],:size => 15 , :maxlength => 13,:class =>'text_field' %>
+          </td>
+          <td>关键字查找
+            <%= text_field_tag :keywords,params[:keywords],:size => 15 , :maxlength => 13,:class =>'text_field' %>
+          </td>
+          <td><%=  Product.human_attribute_name("state") %>
+            <%= f.select :state_equals , [["",""]]+Product::STATE.map { |k,v|[v ,k]  },:class =>'text_field' %>
+          </td>
+
+          <td><%=  Product.human_attribute_name("sort_id") %>
+            <%= f.select :sort_id_equals ,[["",""]]+Sort.all.map{|s| [s.name,s.id]} ,:class =>'text_field' %>
+          </td>
+
+          <td><%=  Product.human_attribute_name("color_id") %>
+            <%= f.select :color_id_equals , [["",""]]+Color.all.map{|c| [c.name ,c.id]},:class =>'text_field' %>
+          </td>
+
+          <td>
+            <%= image_submit_tag '/images/searchr.jpg'  %>
+          </td>
+        </tr>
+
+    </tbody>
+  </table>
+<% end %>

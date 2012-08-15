@@ -1,0 +1,93 @@
+
+  <%= form_for([:admin , @article] ,:url => path,:html=>{:class => "form",:multipart => true}) do |f| %>
+    <%# f.error_messages %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @article}  %>
+
+
+    <table  class="data2 data3" >
+      <tr class="odd">
+        <th width="60px">标题</th>
+        <td width="200px">    <%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th width="60px">幅标题</th>
+        <td width="200px">     <%= f.text_field :subhead %></td>
+      </tr>
+      <tr>
+        <th width="60px">来源</th>
+        <td width="200px">     <%= f.text_field :from %></td>
+      </tr>
+      <tr>
+        <th width="60px">分类</th>
+        <td width="200px">    <%= f.select :category_id ,Category.all.map{|c| [c.name,c.id]} %></td>
+      </tr>
+      <tr>
+        <th width="60px">作者</th>
+        <td width="200px">     <%= f.text_field :author %></td>
+      </tr>
+      <tr>
+        <th width="60px">简介</th>
+        <td width="200px">   <%= f.text_field :summary %></td>
+      </tr>
+
+      <tr>
+        <th width="60px">内容</th>
+        <td width="200px">
+  <%#= fckeditor_textarea(:article ,:body, :toolbarSet => 'Simple', :width => '100%', :height => '500px') %>
+           <%= f.text_area :body %>
+        </td>
+      </tr>
+      <tr>
+        <th width="60px">选择图像</th>
+        <td width="200px">  <p>
+            <%=  file_field_tag("image[]") %><br/>
+            <%=  file_field_tag("image[]") %><br/>
+            <%=  file_field_tag("image[]") %><br/>
+            <%=  file_field_tag("image[]") %><br/>
+        </p></td>
+      </tr>
+      <tr>
+        <td width="60px"></td>
+        <td width="200px">   <%= f.submit '提交'  ,:class => "button" %></td>
+      </tr>
+    </table>
+
+
+
+     <% if  ['edit' ,'update'].include?(action_name) %>
+已经上传的图片
+  <table   class="data2" >
+        <tr>
+      <td colspan="5">
+    <% form_for([:admin , @article] ,  :url => path , :html => {:class => :form , :multipart => true}) do |f| %>
+   <%= f.error_messages %>
+        添加图片
+    <%= file_field_tag("image[]") %>
+          <%= f.submit '上传' ,:class => :button %>
+      <% end %> </td>
+    </tr>
+    <tr>
+      <th>顺序</th>
+      <th>图片</th>
+      <th>图片大小</th>
+      <th>排序</th>
+      <th>操作</th>
+
+    </tr>
+
+    <%  @article.article_images.each do |i| %>
+      <tr>
+        <td><%=h i.sort %></td>
+        <td><%=image_tag i.image.url ,:size=>"60x60" %></td>
+        <td><%=h "#{(i.image_file_size.to_i/(1024.0*1024.0)).to_s[0..5]}M(兆)" %></td>
+        <td>
+          <%= link_to_remote((image_tag "/images/sort_up.jpg" ,:size => "10x15"),:url=>article_image_sort_ajax_path(:article_id=>@article.id ,:article_image_id => i.id,:sort => "up"),:method => :get)%>
+          <%= link_to_remote((image_tag "/images/sort_down.jpg",:size => "10x15"),:url=>article_image_sort_ajax_path(:article_id=>@article.id, :article_image_id =>i.id,:sort => "down"),:method => :get) %>
+        </td>
+        <td><%= link_to '删除', admin_article_image_path(i,:article_id=>@article.id), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <%end%>
+  </table>
+    <% end %>
+  <% end %>
+  

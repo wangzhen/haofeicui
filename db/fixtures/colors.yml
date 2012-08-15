@@ -1,0 +1,16 @@
+1:
+  id: 1
+  name: 飘花
+  description: 飘花
+  sort:      1
+2:
+  id: 2
+  name: 油青
+  description: 油青
+  sort: 2
+
+3:
+  id: 3
+  name: 紫罗蓝
+  description: 紫罗蓝
+  sort: 3

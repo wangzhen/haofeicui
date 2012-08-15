@@ -1,0 +1,43 @@
+<h1>Sign up as a new user</h1>
+<%=render :partial =>"/users/search" %>
+<table><tr>
+    <th><%= order_by_link  :email  , :text=>User.human_attribute_name("email") %></th>
+    <th><%#= order_by_link  :password  , :text=>User.human_attribute_name("password") %></th>
+    <th><%= order_by_link  :name  , :text=>User.human_attribute_name("name") %></th>
+    <th><%= order_by_link  :nickname  , :text=>User.human_attribute_name("nickname")%></th>
+    <th><%= order_by_link  :introduction  , :text=>User.human_attribute_name("introduction")%></th>
+    <th><%= order_by_link  :phone  , :text=>User.human_attribute_name("phone")%></th>
+    <th><%= order_by_link  :mobile  , :text=>User.human_attribute_name("mobile") %></th>
+    <th><%= order_by_link  :address  , :text=>User.human_attribute_name("address")%></th>
+    <th><%= order_by_link  [:province=>:name]  , :text=>Province.human_name %></th>
+    <th><%= order_by_link  [:city=>:name] , :text=>City.human_name %></th>
+    <th><%= order_by_link  [:district=>:name]  , :text=>District.human_name %></th>
+    <th><%= order_by_link  [:roles=>:name]  , :text=>Role.human_name %></th>
+
+
+  </tr>
+  <% @users.each do |user|%>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%#=user.password %></td>
+      <td><%= user.name %></td>
+      <td><%=  user.nickname%></td>
+      <td><%=  user.introduction%></td>
+      <td><%=  user.phone%></td>
+      <td><%= user.mobile %></td>
+      <td><%=  user.address%></td>
+      <td><%= user.province.name %></td>
+      <td><%=user.city.name %></td>
+      <td><%= user.district.name %></td>
+      <td><% user.roles.each do |role|%>
+          <%=role.name%>
+        <%end %>
+      </td>
+      <td><%=link_to "edit" , edit_user_url(user) %></td>
+      <td><%=link_to "delete" , user_url(user)  ,:metdod=>:delete , :confirm => "are you sure?" %></td>
+    </tr>
+  <%end %>
+
+
+
+</table>

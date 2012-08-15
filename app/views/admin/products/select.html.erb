@@ -1,0 +1,47 @@
+
+<% form_for @search,:url => select_admin_products_path ,:html => {:method => :get} do |f| %>
+  <p class="center">
+    <% f.fields_for @search.conditions do |product| %>
+      <%= Product.human_attribute_name("name") %>
+      <%= product.text_field(:name_like,:size=>15) %>
+      <%= product.submit t("button.search") %>
+      <%= link_to "关闭","javascript:void(0);", :onclick=>"window.close();" %>
+    <% end %>
+  </p>
+<% end %>
+
+<div class="users-list">
+  <table <%= table_attrs %>>
+    <tr>
+      <th> &nbsp;</th>
+      <th>
+        <%= order_by_link :name,:text=>Product.human_attribute_name("name") %>
+      </th>
+       <th>
+        <%=link_to "internet price"%>
+      </th>
+         <th>
+           <%=link_to "user price"%>
+        
+      </th>
+      <th>
+        <%= order_by_link [:category=>{:parent=>:name}],:text=>Product.human_attribute_name("category1") %>
+      </th>
+      <th>
+
+        <%= order_by_link [:category=>:name],:text => Product.human_attribute_name("category2") %>
+      </th>
+    </tr>
+    <% @products.each do |p| %>
+      <tr class = '<%= alternate %>' >
+        <td>
+          <%= link_to_function t("button.select"), "window.opener.changeLineProduct('#{p.id}', '#{admin_products_path}');window.close();" %>
+        </td>
+        <td><%= h  p.name %></td>
+      </tr>
+
+    <% end %>
+    <%= will_paginate @products %>
+  </table>
+  <%= will_paginate @products %>
+</div>

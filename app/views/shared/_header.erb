@@ -1,0 +1,63 @@
+<script type="text/javascript">
+  document.observe("dom:loaded",function(){
+    imgs = $$("#global-nav li img");
+    imgs.each(function(img){
+      img.observe("mouseover",function(){
+       	this.src = this.src.replace(/^(.+)(\.[a-z]+)$/, "$1_over$2");
+      })
+      img.observe("mouseout",function(){
+        this.src = this.src.replace(/^(.+)_over(\.[a-z]+)$/, "$1$2");
+      })
+    })
+  });
+</script>
+<div id="header">
+  <h1><a href="/"><img src="/images/logo_01.gif" alt="Love Chic" width="155" height="48" /></a><img src="/images/text_header_01.gif" alt="" width="329" height="52" /></h1>
+  <div id="guide-nav-bar">
+    <p class="description"><strong>女性的专用性爱健康网站</strong></p>
+    <div class="guide-nav">
+      <% if current_user.blank? %>
+        <span class="guide-nav-greeting"></span>
+        <ul>
+          <li><%= link_to t("user_register"),signup_path %></li>
+          <li><%= link_to t("user_login"),login_path %></li>
+          <li><%= link_to t("contact"), new_contact_path %></li>
+          <li class="pseudo-last-child"><%= link_to image_tag("guide-nav_header_01.gif"),cart_path %></li>
+        </ul>
+      <%else%>
+        <span class="guide-nav-greeting"> <%= "你好"+ current_user.nickname %></span>
+        <ul>
+          <li><%= link_to t("users.edit.user_edit"),edit_user_path %></li>
+          <li><%= link_to t("users.global.user_logout"),logout_path %></li>
+          <li><%= link_to t("contact"), new_contact_path %></li>
+          <li class="pseudo-last-child"><%= link_to image_tag("guide-nav_header_01.gif"),cart_path %></li>
+        </ul>
+      <%end%>
+      <!-- /div.guide-nav -->
+    </div>
+    <!-- /div#guide-nav-bar -->
+  </div>
+  <div id="global-nav">
+    <ul>
+      <li><a href="/"><img src="/images/global-nav_01.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/products/ranking"><img src="/images/global-nav_02.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/1"><img src="/images/global-nav_03.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/2"><img src="/images/global-nav_04.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/3"><img src="/images/global-nav_05.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/4"><img src="/images/global-nav_06.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/5"><img src="/images/global-nav_07.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+      <li><a href="/categories/6"><img src="/images/global-nav_08.gif" alt="" width="120" height="31" class="Hover" /></a></li>
+     
+    </ul>
+    <!-- /div#global-nav -->
+  </div>
+  <div id="site-search">
+    <% form_tag  result_products_path ,:method =>:get do %>
+      <%= text_field_tag :key  %>
+      <input type="image" class="image" src="/images/action-link_header_01.gif" alt="" onclick="this.form.submit();"/>
+      <span><a href="/products/search">详细搜索</a></span>
+    <% end %>
+    <!-- /div#site-search -->
+  </div>
+  <!-- /div#header -->
+</div>

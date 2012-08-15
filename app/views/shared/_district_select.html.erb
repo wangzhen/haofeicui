@@ -1,0 +1,10 @@
+<%
+name= options[:name].blank? ? "district_id" :options[:name]
+
+options.delete('name')
+%>
+<% if model == 'search' %>
+  <%= districts.blank? ? select(model+"[conditions]",'district_id_is',{},{:include_blank=>true} ,html_options)  : collection_select(model+"[conditions]","district_id_is",districts,"id","name",{:include_blank=>true},html_options) %>
+<%else%>
+  <%= districts.blank? ? select(model,name,{},{:include_blank=>true} ,html_options)  : collection_select(model,name,districts,"id","name",{:include_blank=>true},html_options) %>
+<%end%>

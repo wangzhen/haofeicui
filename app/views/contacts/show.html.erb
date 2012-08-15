@@ -1,0 +1,76 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'pagecontent' ,'pagetitlemenu_dolphin'  , 'pagetitlemenu_dolphin' ,'comment' %>
+  <%= javascript_include_tag "base" , 'common' , 'form' ,'blockui' ,'comment' %>
+  <% end %>
+<div id="content" style="width: 1002px; height: 341px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+<!-- 网页标题(菜单) -->
+
+<%= render :partial => "/home/left" %>
+
+<!-- 当前位置提示条 -->
+
+<div id="pdv_5641" class="pdv_class" title="当前位置" style="width: 760px; height: 30px; top: 0px; left: 242px; z-index: 9;">
+<div id="spdv_5641" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+<div class="pdv_border" style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(/images/nav-border-title.jpg) no-repeat scroll 0px 0px transparent;">
+	<div style="float: right; height: 100%; width: 80px; background: url(/images/nav-border-title.jpg) no-repeat scroll -920px 0px transparent;"></div>
+
+
+<div id="nav">
+您现在的位置：<a href="/">首页</a> &gt;&nbsp;&nbsp;咨询
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- 网页内容详情 -->
+
+<div id="pdv_5642" class="pdv_class" title="内容标题" style="width: 700px; height: 198px; top: 60px; left: 260px; z-index: 10;">
+<div id="spdv_5642" class="pdv_content" style="overflow: visible; width: 100%;">
+<div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid rgb(221, 221, 221); background: none repeat scroll 0% 0% rgb(255, 255, 255);">
+	<div style="height: 25px; margin: 1px; display: none; background: none repeat scroll 0% 0% rgb(204, 204, 204);">
+		<div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold; color: rgb(255, 255, 255);">
+		内容标题
+		</div>
+		<div style="float: right; margin-right: 10px; display: none;">
+
+		<a href="http://jadejade.cn/1284882468/page/html/-1" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
+		</div>
+	</div>
+<div style="padding: 0px;">
+<h2 class="title">我们会以最快的时间以邮件或电话回复您的内容，谢谢您对本站的支持与关注。</h2>
+    <h2 class="title">您的咨询内容为：</h2>
+    <div class="inner">
+      <table class="table">
+        <tbody>
+
+          <tr class="odd">
+            <td> 姓名： </td><td> <%=h @contact.name %> </td>
+          </tr>
+          <tr class="odd">
+            <td> 电话 ：</td><td>  <%=h @contact.phone %></td>
+          </tr>
+          <tr class="odd">
+            <td> 邮件： </td><td> <%=h @contact.email %></td>
+          </tr>
+          <tr class="odd">
+            <td> QQ号： </td><td>        <%=h @contact.qq %></td>
+          </tr>
+          <tr class="even">
+            <td> 咨询： </td><td>      <%=h @contact.content %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>

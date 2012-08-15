@@ -1,0 +1,33 @@
+<div class="content">
+  <h2 class="title">评论管理</h2>
+  <div class="inner">
+    <table class="table">
+      <tr>
+        <th>产品</th>
+        <th>产品名称</th>
+        <th>内容</th>
+        <th>建议调整价</th>
+        <th>用户</th>
+        <th>操作</th>
+      </tr>
+      
+      <% @product_comments.each do |product_comment| %>
+        <tr>
+          <td>      
+          <%=   image_tag(product_comment.product.first_list_image) %></td>
+          <td><%= link_to product_comment.product.name  , product_path(product_comment.product)%></td>
+          <td><%=h product_comment.content %></td>
+          <td><%=h product_comment.price %></td>
+          <td><%=link_to  product_comment.user.name , user_path(product_comment.user) ,:popup =>true %></td>
+          <td><%= link_to '删除', product_comment, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+    
+    <br />     
+    
+  </div>
+</div>                               
+
+
+

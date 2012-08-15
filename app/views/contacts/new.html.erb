@@ -1,0 +1,108 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag '/stylesheets/pagecontent' ,'/stylesheets/pagetitlemenu_dolphin'  ,
+    '/stylesheets/pagetitlemenu_dolphin' ,'/stylesheets/comment' %>
+  <%= javascript_include_tag "/javascripts/base" , '/javascripts/common' , '/javascripts/form' ,
+    '/javascripts/blockui' ,'/javascripts/comment' %>
+<% end %>
+<div id="content" style="width: 1002px; height: 341px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+  <!-- 网页标题(菜单) -->
+
+  <%= render :partial => "/home/left" %>
+
+  <!-- 当前位置提示条 -->
+
+  <div id="pdv_5641" class="pdv_class" title="当前位置" style="width: 760px; height: 30px; top: 0px; left: 242px; z-index: 9;">
+    <div id="spdv_5641" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(/images/nav-border-title.jpg) no-repeat scroll 0px 0px transparent;">
+        <div style="float: right; height: 100%; width: 80px; background: url(/images/nav-border-title.jpg) no-repeat scroll -920px 0px transparent;"></div>
+
+
+        <div id="nav">
+          您现在的位置：<a href="/">首页</a> &gt;&nbsp;&nbsp;咨询
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 网页内容详情 -->
+
+  <div id="pdv_5642" class="pdv_class" title="内容标题" style="width: 700px; height: 198px; top: 60px; left: 260px; z-index: 10;">
+    <div id="spdv_5642" class="pdv_content" style="overflow: visible; width: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid rgb(221, 221, 221); background: none repeat scroll 0% 0% rgb(255, 255, 255);">
+        <div style="height: 25px; margin: 1px; display: none; background: none repeat scroll 0% 0% rgb(204, 204, 204);">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold; color: rgb(255, 255, 255);">
+		内容标题
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+
+            <a href="http://jadejade.cn/1284882468/page/html/-1" style="line-height: 25px; color: rgb(255, 255, 255);">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+          <h2 class="title">咨询提交后，管理员将以邮件，QQ或电话的形式回访</h2>
+
+          <div class="noticediv" id="notice"></div>
+          <% form_for(@contact ,:html =>{:class=>'form'}) do |f| %>
+            <%= f.error_messages %>
+            <%= f.hidden_field :user_id %>
+            <%= f.hidden_field :ipaddr %>
+          <br />
+            <div class="row">
+              <div class="con">
+                姓名： <%= f.text_field :name  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                电话 ：<%= f.text_field :phone  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                邮件 ：<%= f.text_field :email  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="con">
+                QQ号：<%= f.text_field :qq  , :class => 'input'%>
+              </div>
+            </div>
+            <br />
+
+            <div class="row">
+              <div class="left">咨询：</div>
+              <div class="con">
+                <%= f.text_area :content ,:size =>'60x6' ,:class => 'textarea'  %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div style="text-align:left;padding:5px 3px 0px 93px">
+            <input type="submit" value="提交" name="commit" id="search_submit" class="submit"/>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
+<style>
+  #errorExplanation , #errorExplanation li, #errorExplanation p {
+    color:blue;
+  }
+</style>

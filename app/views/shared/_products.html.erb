@@ -1,0 +1,8 @@
+<% products.each_with_index  do|p,index| %>
+  <div class="pic">
+    <p style="margin:6px 0"><%= link_to(image_tag(p.first_list_image ,:size=>"120x90") , product_path(p.id.to_s + '-'+ p.name)  )%></p>
+    <p style="margin:6px 0"><%= p.name %>木林</p>
+    <p style="margin:6px 0"><%= p.price %></p>
+  </div>
+<%end%>
+<br/>

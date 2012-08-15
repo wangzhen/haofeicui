@@ -1,0 +1,43 @@
+<div id="pdv_5623" class="pdv_class" title="" style="width: 210px; height: 308px; top: 0px; left: 0px; z-index: 11;">
+  <div id="spdv_5623" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+    <div class="pdv_border" style="border: 0px none; height: 308px; padding: 0pt; margin: 0pt; background: url(/images/left_bar_bg.jpg) repeat-y scroll 0% 0% rgb(249, 249, 249);">
+      <div style="height: 100%; background: url(/images/left_bar_bg.jpg) repeat-y scroll right center transparent;">
+        <div style="height: 40px; border: 0px none; padding: 0pt; margin: 0pt; background: url(/images/left_bar_title.jpg) no-repeat scroll 0px 0px transparent;">
+          <div style="float: right; height: 40px; width: 16px; background: url(/images/left_bar_title.jpg) no-repeat scroll -984px 0px transparent;"></div>
+        </div>
+        <div style="margin: 0px; padding: 0px;">
+          <div class="shoptwoclass_diy">
+
+            <div class="shoptwoclass_diy_top"><a href="/products">按种类分</a></div>
+            <ul>
+              <% Sort.all.each  do |sort| %>
+                <li>
+                  <%= link_to(sort.name , products_path(:search => { :sort_id_equals => sort.id}) ) %>
+                  |</li>
+              <% end %>
+            </ul>
+            <br/>
+            <br/>
+
+            <div class="shoptwoclass_diy_top"><a href="/products">按颜色分</a></div>
+            <ul>
+              <% Color.all.each  do |color| %>
+                <li>            
+   <%= link_to(color.name , products_path(:search => { :color_id_equals => color.id} ) ) %>
+
+                  |</li>
+              <% end %>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: -9px; height: 9px; line-height: 9px; background: url(/images/left_bar_title.jpg) no-repeat scroll 0px -299px transparent;">&nbsp;</div>
+    <div style="float: right; margin-top: -9px; width: 10px; height: 9px; line-height: 9px; background: url(/images/left_bar_title.jpg) no-repeat scroll -990px -299px transparent;">&nbsp;</div>
+
+  </div>
+</div>

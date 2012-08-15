@@ -1,0 +1,22 @@
+div.titlemenu_dolphin{
+margin:0px;
+padding:15px 0px 30px 28px;
+}
+
+div.titlemenu_dolphin a.titlemenu_dolphin:link,div.titlemenu_dolphin a.titlemenu_dolphin:visited,div.titlemenu_dolphin a.titlemenu_dolphin:active{
+display:block;
+text-decoration: none;
+font:12px/30px Verdana, Arial, Helvetica, sans-serif;
+height:32px;
+text-align:left;
+background:url(/images/dot2.jpg) 0px 0px no-repeat;
+padding-left:48px;
+margin:0px;
+color:#2e2e2e;
+}
+
+div.titlemenu_dolphin a.titlemenu_dolphin:hover{
+display:block;
+color:#e10000; 
+text-decoration: none;
+}

@@ -1,0 +1,43 @@
+<div id="main">
+<h2>文章分类</h2>
+
+
+<% form_for([:admin , @category] , :html=> {:class => 'form'}) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @category}  %>
+  <p>
+    名称：
+    <%= f.text_field :name %>
+    <%= f.submit '添加' ,:class =>'button' %>
+  </p>
+<% end %>
+        
+
+<table class="data2">
+  <tr>
+    <th>名称</th>
+    <th>操作</th>
+  </tr>
+  
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%=h category.name %></td>
+      <td>
+        <%= link_to_function '修改', "$('#category#{category.id}').toggle()" %>|
+        <%= link_to '删除', admin_category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  
+  
+    <% form_for([:admin ,category], :html=> {:class => 'form'}) do |f| %>
+      
+      <tr id="category<%=  category.id %>" style ='display:none' class = 'form'>
+        <td>
+          <%= f.text_field :name,:class =>'text_field'   %>
+        </td>      
+        <td>
+          <%= f.submit '修改' ,:class =>'button' %>  
+        </td>
+      </tr>
+    <% end %>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+  <% end %>
+</table>
+</div>

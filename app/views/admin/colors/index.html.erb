@@ -1,0 +1,56 @@
+<div id="main">
+  <h2><%= t('h2.colors') %></h2>
+
+  <div class="btn_t btn_add">
+   <% form_for([:admin , @color] , :html=> {:class => 'form'}) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @color}  %>
+
+  <p>
+    名称：
+    <%= f.text_field :name %>
+    <%= f.submit '添加' ,:class =>'button' %>
+  </p>
+<% end %>
+  </div>
+
+  <table class="data2 order-table">
+    <tr>
+      <th><%= Color.human_attribute_name('id') %></th>
+      <th><%= Color.human_attribute_name('name') %></th>
+      <th><%= Color.human_attribute_name('sort') %></th>
+      <th><%= t('labels.operate') %></th>
+    </tr>
+
+  <% @colors.each do |color| %>
+    <tr>
+      <td>  <%=h color.sort %></td>
+      <td><%=h color.name %></td>
+      <td>
+        <%= link_to((image_tag "/images/sort_up.jpg" ,:size => "10x15"),color_sort_ajax_path(:color_id => color.id,:sort => "up"),:remote => :true , :method => :get)%>
+        <%= link_to((image_tag "/images/sort_down.jpg",:size => "10x15"),color_sort_ajax_path(:color_id => color.id,:sort => "down"),:remote => :true ,:method => :get)%>
+      </td>
+      <td>
+          <%= link_to_function t('labels.update'), "$('color#{color.id}').toggle()" %>|
+      <%= link_to t('labels.delete'), admin_color_path(color), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+
+
+      <% form_for([:admin ,color], :html=> {:class => 'form'}) do |f| %>
+
+        <tr id="color<%=  color.id %>" style ='display:none' class = 'form'>
+        <td><%=h color.sort %></td>
+        <td>
+          <%= f.text_field :name,:class =>'text_field' , :size => 3 %>
+        </td>
+        <td>
+          <%= f.text_field :description,:class =>'text_field'  , :size => 3 %>
+        </td>
+        <td>
+          <%= f.submit '修改' ,:class =>'button' %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+</div>
+

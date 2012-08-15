@@ -1,0 +1,31 @@
+/* ============ËÑË÷±íµ¥============== */
+div.shopsearchformzone{
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+
+div.shopsearchformzone div.shopsearchform{
+	height: 24px;
+	line-height:23px;
+	margin:0px;
+	float:left;
+
+}
+
+div.shopsearchformzone div.shopsearchform .input{
+	height:24px;
+	width:294px;
+	line-height:23px;
+	border:0px;
+	padding-left:8px;
+	background:url(../images/searchl.jpg) 0 0 no-repeat;
+}
+
+div.shopsearchformzone div.shopsearchform2{
+	height: 24px;
+	line-height:19px;
+	margin-top:1px;
+	padding:0px;
+	float:left;
+}

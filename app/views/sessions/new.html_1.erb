@@ -1,0 +1,46 @@
+
+<div id="box">
+<div id="block-login" class="block">
+  <h2>用户登陆</h2>
+  <div class="content login">
+    <% form_tag sessions_path ,:class =>'form'do -%>
+      <div class="group">
+        <div class="left">
+          <%= label_tag 'email' ,'邮件',:class=>"label right" %>
+        </div>
+        <div class="right">
+          <%= text_field_tag 'email', @login ,:class=>"text_field"%>   
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div class="group">
+        <div class="left">
+          <%= label_tag 'password',"密码",:class=>"label right" %>
+        </div>
+        <div class="right">
+          <%= password_field_tag 'password', nil ,:class=>"text_field" %>
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div class="group">
+        <div class="left">  <%= label_tag 'remember_me', '记住我'  ,:class=>"label right"%>
+        </div>
+        <div class="right">
+          <%= check_box_tag 'remember_me', '1', @remember_me ,:checked =>'checked'%>    
+          
+        </div>
+        <div class="clear"> </div>
+      </div>    
+      <div class="group navform">
+        <div class="left"> 
+        </div>
+        <div class="right">
+           <%= link_to "忘记密码" , forgot_password_path%> <input type="submit" value="登陆" class="button"/>
+        </div>
+        <div class="clear"> </div>
+      </div>
+    <% end -%>
+
+  </div>
+</div>
+</div>

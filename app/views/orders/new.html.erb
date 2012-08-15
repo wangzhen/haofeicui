@@ -1,0 +1,90 @@
+<% content_for :head do %>
+  <%= calendar_date_select_includes %>
+<% end %>
+<div id="block-lists" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#block-tables">订单信息</a></li>
+    </ul>
+    <div class="clear">   </div>
+  </div>
+  <div class="content">
+    <br id="clear"/>
+    <% form_for :order,:url=>orders_path ,:method=>:post , :html=>{:class=>'form'} do |f| %>
+      <div class=" order section section-colorD">
+        <h2 class="section-title heading-level3">收货人信息</h2>
+       
+        <table>
+          <tr><td></td><td ><span class="note" style="padding-left:10px"  ><%= error_message_on :order, :user_name%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%= f.label Order.human_attribute_name("user_name") %></td>
+          <td style="padding-left:20px"><%= f.text_field :user_name %></td></tr>
+        
+          <tr><td></td><td ><span class="note"style="padding-left:10px"><%= error_message_on :order, :email%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%= f.label :email %></td>
+            <td  style="padding-left:20px"><%= f.text_field :email ,:size=> 30, :maxlength =>100%></td>
+          </tr>
+          <tr><td></td><td><span class="note" style="padding-left:10px" ><%= error_message_on :order, :province_id %><span class="note" style="padding-left:50px" ><%= error_message_on :order, :city_id %></span></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"> <%= f.label Order.human_attribute_name("full_district_name") %></td>
+            <td style="padding-left:20px">
+            <%= select_province_city("order",'province_id')%>
+            <%= render :partial=>"shared/city_select" , :locals=>{:model=>'order' , :cities=>@cities ,:options=>{} ,:html_options=>{}} %>
+            <%= render :partial=>"shared/district_select" , :locals=>{:model=>'order' , :districts=>@districts ,:options=>{} ,:html_options=>{}} %>
+                              
+          </tr>
+          <tr><td></td><td><span class="note" style="padding-left:10px"><%= error_message_on :order, :address%></span></td></tr>
+          <tr >
+            <td style="padding-left:25px"><%= f.label Order.human_attribute_name("address") %></td>
+            <td style="padding-left:20px"><%= f.text_field :address ,:size=> 30, :maxlength =>255 %></td>
+          </tr>
+        
+          <tr><td></td><td ><span class="note" style="padding-left:10px"><%= error_message_on :order, :postal_code%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%= f.label Order.human_attribute_name("postal_code") %></td>
+            <td style="padding-left:20px"><%= f.text_field :postal_code, :maxlength =>10 %></td>
+          </tr>
+          <tr><td></td><td><span class="note" style="padding-left:10px" ><%= error_message_on :order, :tel%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%= f.label Order.human_attribute_name("phone") %></td>
+            <td style="padding-left:20px"><%= f.text_field :phone,  :maxlength=>30 %></td>
+          </tr>
+        
+          <tr><td></td><td ><span class="note" style="padding-left:10px"><%= error_message_on :order, :mobile%></span><td></tr>
+          <tr>
+            <td style="padding-left:25px"><%= f.label Order.human_attribute_name("mobile") %></td>
+            <td style="padding-left:20px"><%= f.text_field :mobile, :maxlength=>30  %></td>
+          </tr>
+          <tr><td></td><td ><span class="note" style="padding-left:10px"><%= error_message_on :order, :fax%></span></td></tr>
+        
+        
+          <tr><td  style="color:#BBA27A ;font-size:134% ;font-style:normal;font-weight:bold;padding-top:15px;padding-left:25px">其他事项</td><td></td></tr>
+        
+          <tr><td></td><td ><span class="note" style="padding-left:10px"><%= error_message_on :order, :delivery_schedule_date%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%=f.label Order.human_attribute_name("delivery_schedule_date")%></td>
+            <td style="padding-left:20px"><%= f.calendar_date_select :delivery_schedule_date, :size => 10, :year_range => [1.day.from_now.year, 1.years.from_now.year], :valid_date_check => "date.stripTime() > (new Date().stripTime())", :maxlength => 10, :keyDown=>false %></td>
+          </tr>
+        
+          <tr><td></td><td > <span class="note" style="padding-left:10px"><%= error_message_on :order, :delivery_schedule_id%></span></td></tr>
+        
+        
+          <tr><td></td><td><span class="note" style="padding-left:10px"><%= error_message_on :order, :remarks1%></span></td></tr>
+          <tr>
+            <td style="padding-left:25px"><%=f.label "user_remark" %></td>
+            <td style="padding-left:20px"><%=f.text_area :user_remark ,:size=>"30x3" ,  :maxlength=>200 %></td>
+          </tr>
+          <tr>
+            <td style="padding-left:25px"></td>
+            <td style="padding-left:20px"><br /><br /><br /><br />
+              <input type="button" onclick="document.location.href = '/cart'"  value='返回购物车' class="button"  />
+              
+              <input type="submit" value='提交订单' class="button"  /></td>
+          </tr>
+        </table>
+      </div>
+      <br />
+    <% end %>
+  </div>
+</div>

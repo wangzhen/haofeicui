@@ -1,0 +1,24 @@
+<h1>Editing sort</h1>
+
+<% form_for(@sort) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @sort}  %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :sort %><br />
+    <%= f.text_field :sort %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sort %> |
+<%= link_to 'Back', sorts_path %>

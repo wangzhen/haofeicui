@@ -1,0 +1,28 @@
+zh:
+   h2:
+     management: 产品信息管理
+     management2: 文章信息管理
+     session_home: 管理首页
+     administrators: 管理员管理
+     edit_administrator: 管理员修改
+     new_administrator: 管理员新增
+     products: 产品管理
+     edit_product: 产品修改
+     new_product: 产品新增
+
+
+     colors: 颜色管理
+     edit_color: 编辑颜色
+     new_color: 新增颜色
+
+     sorts: 种类管理
+     edit_sort: 编辑种类
+     new_sort: 新增种类
+
+     articles: 文章管理
+     edit_article: 编辑文章
+     new_article: 新增文章
+
+     categories: 分类管理
+     edit_category: 编辑分类
+     new_category: 新增分类

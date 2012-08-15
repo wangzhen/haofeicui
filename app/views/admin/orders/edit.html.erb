@@ -1,0 +1,14 @@
+<% content_for :back do  %>
+  <%#= backward_button_tag(admin_orders_path(:search=>params[:search] ,:title=>params[:title],:name=>params[:name],:nickname=>params[:nickname],:content=>params[:content],:key=>params[:key])) %>
+  <% end %>
+
+<% unless @order.errors.blank? %>
+  <script type="text/javascript">
+    document.observe("dom:loaded",function(){ updateSummary();})
+  </script>
+<% end %>
+  <script type="text/javascript">
+    document.observe("dom:loaded",function(){ updateSummary();})
+  </script>
+<h1><%= t(".title") %></h1>
+<%= render :partial=>"form" ,:locals=>{:path=>admin_order_path(@order , :name=>params[:name] , :user_name_show=>params[:user_name_show],:serial=>params[:serial] ,:search=>params[:search])} %>

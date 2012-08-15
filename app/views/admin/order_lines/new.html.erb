@@ -1,0 +1,27 @@
+<tr class="order_line">
+  <td>
+    <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][name]","", :size => 8, :readonly => true, :class => "name" %>
+    <%= hidden_field_tag "order[order_lines_attributes][#{Time.now.to_i}][product_id]", nil, :class => "product_id" %>
+    <%= link_to_function t("button.select"), "ReferenceWindow.open('#{select_admin_products_path}'); ReferenceWindow.sourceElement=this;" %>
+  </td>
+  
+  <td>
+    <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][color]", "1", :size => 3, :readonly => true, :class => "color" %>
+  </td>
+  <td> <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][sort]", "", :size => 3, :readonly => true,:class => "sort"%></td>
+  
+  <td>
+    <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][quantity]", "1",:size => 3 , :class => "quantity" %>
+  </td>
+  <td>
+    <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][price]", "", :size => 3, :readonly => true, :class => "price", :onchange => "updateSummary()", :maxlength => 3 %>
+  </td>
+  <td>
+    <%= text_field_tag "order[order_lines_attributes][#{Time.now.to_i}][remark]", "", :size => 30,  :maxlength => 200 %>
+  </td>
+  <td>
+    <%= link_to_function t("button.delete"), "$(this).parentNode.parentNode.remove(); updateSummary();" %>
+  </td>
+</tr>
+
+

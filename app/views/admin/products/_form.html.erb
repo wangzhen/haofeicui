@@ -1,0 +1,130 @@
+
+<%= form_for([:admin , @product] ,  :url => path , :html => {:class => :form , :multipart => true}) do |f| %>
+<%= render :partial => "/admin/shared/errors" ,:locals => {:obj => @product}  %>
+
+  <table  class="data2 data3" >
+    <tr>
+      <th align="right">
+        <%= Product.human_attribute_name(:name)%> :
+      </th>
+      <td>             <%= f.text_field :name %>    </td>
+    </tr>
+    <tr>
+      <th align="right">      <%= Product.human_attribute_name(:serial)%> : </th>
+      <td>             <%= f.text_field :serial %> </td>
+    </tr>
+    <tr>
+      <th align="right">           <%= Product.human_attribute_name(:proved_serial)%> : </th>
+      <td>                <%= f.text_field :proved_serial %> </td>
+    </tr>
+    <tr>
+      <th align="right">  <%= Product.human_attribute_name(:sort_id)%>  :</th>
+      <td>  <%= f.select :sort_id ,Sort.all.map{|s| [s.name,s.id]}  %> </td>
+    </tr>
+    <tr>
+      <th align="right">  <%= Product.human_attribute_name(:color_id)%>  :</th>
+      <td>   <%= f.select :color_id , Color.all.map{|c| [c.name ,c.id]} %></td>
+    </tr>
+    <tr>
+      <th align="right">  <%= Product.human_attribute_name(:state)%>  :</th>
+      <td>   <%= f.select :state , Product::STATE.map { |k,v|[v ,k]  } %></td>
+    </tr>
+    <tr>
+      <th  align="right">  <%= Product.human_attribute_name(:rank)%> :</th>
+      <td>    <%= f.select :rank , Product::RANK.map { |k,v|[v ,k]  } %></td>
+    </tr>
+    <tr>
+      <th  align="right">  <%= Product.human_attribute_name(:price)%> :</th>
+      <td>   <%= f.text_field :price %></td>
+    </tr>
+    <tr>
+      <th  align="right"> <%= Product.human_attribute_name(:current_price)%> :</th>
+      <td>       <%= f.text_field :current_price %></td>
+    </tr>
+    <tr>
+      <th  align="right"><%= Product.human_attribute_name(:introduction)%> :</th>
+      <td>
+        <%#= fckeditor_textarea(:product ,:introduction, :toolbarSet => 'Simple', :width => '100%', :height => '500px') %>
+       <%=  f.text_area(:introduction , :size => '60x12') %>
+      </td>
+
+    </tr>
+    <tr>
+      <th  align="right"><%= Product.human_attribute_name(:image)%> :</th>
+      <td>
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+        <%= file_field_tag("image[]") %><br />
+      </td>
+    </tr>
+     
+    <tr>
+      <th  align="right">&nbsp;</th>
+      <td  align="right">
+        <%= f.submit t("labels.save") ,:class => :button %>   |
+        <% if  ['edit' ,'update'].include?(action_name) %>
+          <%= link_to '显示', admin_product_path(@product) %> |
+        <% end %>
+        <%= link_to '返回', admin_products_path %>    </td>
+    </tr>
+  </table>
+       <% if  ['edit' ,'update'].include?(action_name) %>
+已经上传的图片
+  <table   class="data2 data3" >
+        <tr>
+      <td colspan="5">
+    <% form_for([:admin , @product] ,  :url => path , :html => {:class => :form , :multipart => true}) do |f| %>
+   <%= f.error_messages %>
+        添加图片
+    <%= file_field_tag("image[]") %>
+          <%= f.submit '上传' ,:class => :button %>
+      <% end %> </td>
+    </tr>
+    <tr>
+      <th>顺序</th>
+      <th>图片</th>
+      <th>图片大小</th>
+      <th>排序</th>
+      <th>操作</th>
+
+    </tr>
+
+    <%  @product.product_images.each do |i| %>
+      <tr>
+        <td><%=h i.sort %></td>
+        <td><%=image_tag i.image.url(:thumb) ,:size=>"60x60" %></td>
+        <td><%=h "#{(i.image_file_size.to_i/(1024.0*1024.0)).to_s[0..5]}M(兆)" %></td>
+        <td>
+          <%= link_to_remote((image_tag "/images/sort_up.jpg" ,:size => "10x15"),:url=>product_image_sort_ajax_path(:product_id=>@product.id ,:product_image_id => i.id,:sort => "up"),:method => :get)%>
+          <%= link_to_remote((image_tag "/images/sort_down.jpg",:size => "10x15"),:url=>product_image_sort_ajax_path(:product_id=>@product.id, :product_image_id =>i.id,:sort => "down"),:method => :get) %>
+        </td>
+        <td><%= link_to '删除', admin_product_image_path(i,:product_id=>@product.id), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <%end%>
+  </table>
+    <% end %>
+
+<% end %>
+
+
+
+

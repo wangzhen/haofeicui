@@ -1,0 +1,30 @@
+<div class="content content_padding">
+<h1>回复（回复同时将发送邮件到客户信箱）</h1>
+
+<% form_for([:admin ,@prodcut_contact] ,{},:html =>{:class =>'form'}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+   咨询：<%=h @prodcut_contact.name %>
+    
+  </p>
+    <p>
+   邮件：<%=h @prodcut_contact.email %>
+    
+  </p>
+      <p>
+   手机或电话：<%=h @prodcut_contact.phone %>
+    
+  </p>
+  <p>
+    回复：<br />
+    <%= f.text_area :reply ,:size => '75x5' %>
+  </p>
+
+  <p align="right">
+    <%= f.submit '提交' ,:class =>'button' %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to '返回', admin_product_contacts_path %>
+  </p>
+<% end %>
+
+
+</div>

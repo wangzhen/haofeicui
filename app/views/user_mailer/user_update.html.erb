@@ -1,0 +1,17 @@
+<%=h @user.name %>信息已更改
+<br /><br />
+
+<br /><br />
+<a href="<%=h @url %>"><%=h @url %></a>
+
+
+<br /><br /><br />
+
+-----
+<%= render :partial => "company_info" %>
+<br />
+<%= App[:from] %>
+<br />
+<%=link_to App[:website] , App[:website] %>
+<br /><br />
+<%= App[:from] %>

@@ -1,0 +1,28 @@
+<div id="main-visual">
+  <img src="/images/shoppingcart.jpg" alt=""  />
+</div>
+  <div id="shopping">
+    <ul>
+      <li style="width:100px"><%=image_tag("/images/order1-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li><%=image_tag("/images/order2-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li><%=image_tag("/images/order3-a.gif")%></li><li id="image"><img src="/images/arrow_blue.png" alt=""/></li>
+      <li><%=image_tag("/images/order4-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li style="width:90px"><%=image_tag("/images/order5-b.gif")%></li>
+    </ul>
+  </div><br id="clear"/>
+  <div class=" payment section section-colorD">
+<% form_tag create_payment_order_path(@order) do  %>
+<h2 class="section-title heading-level3">选择支付方式</h2>
+  <% Payment.all.each do |payment| %>
+    <%= radio_button_tag :payment,payment.id%><%= payment.name %>
+  <% end %>
+<p>
+
+</p>
+  <p> <%= image_submit_tag"/images/submit-g.jpg" , :onclick=>"if( $('payment_1').checked || $('payment_2').checked ) { return true;} else {alert('必须选择一种支付方式');return false; }" %>
+ <%#= link_to "返回",new_order_path,:id => "submit_button" %>
+    <%=link_to image_tag("/images/back-r.jpg",:style=>("vertical-align:top;")),new_order_path%>
+
+  </p>
+<% end %>
+  </div>

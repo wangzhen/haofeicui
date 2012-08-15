@@ -1,0 +1,207 @@
+zh:
+  tops:
+    index:
+      news: "新闻"
+      category: "产品分类"
+      people_ranking: "人气产品销售排行"
+      ranking: "销售排行一栏"
+      blog: "进入员工博客"
+      price: "单价"
+      featured_products: "推荐产品"
+  
+  products:
+    index:
+      news: "新闻"
+      category: "产品分类"
+      people_ranking: "人气产品销售排行"
+      ranking: "销售排行一栏"
+      blog: "进入员工博客"
+      price: "单价"
+      featured_products: "推荐产品"
+    show:
+      home: "首页"
+      category: "分类"
+      products: "产品介绍"
+      form: "宣传形式"
+      back: "返回"
+      other_purchase: "其他用户购买"
+      featured_products: "推荐产品"
+      information: "有关订购页面"
+    ranking:
+      ranking: "人气商品销售排行"
+      popularity_rating: "民望"
+      rankings_bath_lotion: "润滑剂・入浴剂排名"
+      massage: "按摩"
+      men: "男性"
+      other: "其他"
+      rotor: "跳蛋"
+      vibration: "振动棒"
+      more: "查看更多"
+  company:
+    first_guide:
+      first: "初次体验者"
+      ranking: "人气商品销售排行"
+      experience: "体验论坛"
+      present: "情调礼品包装"
+    guide:
+       ranking: "人气商品销售排行"
+       experience: "体验论坛"
+       present: "情调礼品包装"
+       use_gudie: "购买步骤"
+       informatin_page: "信息页"
+    present:
+       present: "情调礼品包装"
+       packaging: "礼物包装介绍 "
+  users:
+    new:
+      title: Sign Up
+      subtitle: 用户注册
+      member_login: "会员登录"
+      registration_form: "注册表"
+    form:
+      note: "请输入必须项目。红色部分为必须输入项目"
+    create:
+      need_activate: "电子邮件已经发出，请根据电邮中的操作提示完成您的注册。"
+    update:
+      password_attention: "没有输入密码,保持前有状态不变。"
+      subtitle: 个人账号信息
+    activate:
+      after_activate: "会员注册成功！请继续登陆网站"
+      miss_activation_code: "激活码丢失或不存在，请使用从您邮件里获取的链接."
+      not_found: "根据激活码，我们未能找到用户 -- 您查看过邮件吗? 或者您已经被激活 -- 试着登录一下."
+    edit:
+      subtitle: 编辑个人账号
+      user_edit: 用户编辑
+    global:
+      user_logout: 登出
+  sessions:
+    new:
+      forgot_password: "忘记密码"
+      remember_me: "下次自动登录"
+      subtitle: "会员登录"
+      member: "Member 会员"
+      join_now: "Join Now 立即注册"
+      join_text: "购买商品前，请先注册成为我们的会员"
+      password: "密码"
+  pages:
+    information:
+      subtitle: "购物指南"
+  forgotten_passwords:
+    flash:
+      delivered: "我们已经发送了重置密码的邮件至 {{email}}，请根据邮件提示进行操作"
+      email_not_exists: "您输入的电子邮件地址不存在"
+      expired: "该链接已经失效"
+      completed: "您的密码已经重置，请使用新密码登录"
+      wrong_reset_code: "您的重置密码有问题"
+    new:
+      message: "请输入您注册的邮件地址"
+      subtitle: "忘记密码"
+    reset:
+      subtitle: "重设密码"
+  orders:
+    new:
+      subtitle: "订单画面"
+  signup:
+    subject: "用户注册手续"
+    msg1: "感谢您的注册"
+    msg2: "请点下面的连接 完成email的确认"
+    msg3: "购买前请先登陆,谢谢"
+  activation:
+    subject: "用户注册成功消息"
+    msg1: "非常感谢您注册Lovechic WEB用户"
+    msg2: "请从下面的站点进去继续您的购物之旅"
+    msg3: "今后也请多多关照"
+  user_update:
+    subject: "信息修改通知"
+    msg1: "个人信息修改成功。"
+    msg2: "点击下面连接登陆本网站"
+    msg3: "今后也请多多关照。"
+  forgot_password:
+    subject: "密码找回"
+    msg1: "请点击下面的连接来修改您的密码。"
+    msg2: "今后也请多多关照。"
+  reset_password:
+    subject: "密码修改通知"
+    msg1: "密码修改成功。"
+    msg2: "今后也请多多关照。"
+  order_ok:
+    subject: "感谢您的订购"
+    msg1: "非常感谢您在Cerahbulle shop购物。"
+    msg2: "订单号码"
+    msg3: "。"
+    msg4: "订单概况"
+    msg5: "订单日期"
+    product_name: "商品名"
+    price: "单价"
+    unit: "数量"
+    tax: "小计"
+    amount: "合计"
+    msg5: "邮寄信息"
+    address: "住所"
+    name: "名字"
+    tel: "电话号码"
+    send_date: "希望到达日"
+    send_time: "希望达到时间"
+    msg6: "请保存邮件内容,如又疑问的时候,请把订单号告诉工作人员"
+    msg7: "谢谢"
+  categories:
+    show:
+      bath_lotion: "润滑剂・入浴剂"
+      ranking_bath_lotion: "润滑剂・入浴剂排名"
+      bath_product: "润滑剂"
+      lotion: "沐浴露"
+      back: "返回"
+      featured_products: "推荐产品"
+      information: "有关订购页面"
+    category_massage:
+      massage: "按摩"
+      ranking_bath_lotion: "润滑剂・入浴剂排名"
+      bath_product: "润滑剂"
+      bath_lotion: "沐浴录"
+      featured_products: "精选产品"
+    category_mens:
+      men: "男性"
+      ranking_bath_lotion: "润滑剂・入浴剂排名"
+      bath_product: "润滑剂"
+      bath_lotion: "沐浴录"
+      featured_products: "精选产品"
+    category_other:
+      other: "其他"
+      ranking_bath_lotion: "润滑剂・入浴剂排名"
+      bath_product: "润滑剂"
+      bath_lotion: "沐浴录"
+      featured_products: "精选产品"
+    category_rotor:
+       rotor: "跳蛋"
+       ranking_bath_lotion: "润滑剂・入浴剂排名"
+       bath_product: "润滑剂"
+       bath_lotion: "沐浴录"
+       featured_products: "精选产品"
+    category_vibration:
+       vibration: "振动棒"
+       ranking_bath_lotion: "润滑剂・入浴剂排名"
+       bath_product: "润滑剂"
+       bath_lotion: "沐浴录"
+       featured_products: "精选产品"
+  mail_common:
+    after_name: "小姐／先生,"
+    label_company_name: "公司名"
+    company_name: "LoveChic"
+    label_address: ""
+    address: "上海市長寧区武夷路351号208室"
+    name1: ""
+    name2: ""
+    label_phone: "電　話"
+    label_fax: "传　真"
+    phone: "021-5155-3335,3336"
+    fax: "021-5155-3337"
+
+
+
+
+
+
+
+
+
+

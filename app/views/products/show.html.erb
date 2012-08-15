@@ -1,0 +1,208 @@
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag '/stylesheets/common' ,'/stylesheets/A' ,"/stylesheets/A_002" ,
+    "/stylesheets/shoplist_roll" ,'/stylesheets/shop_search_simple' ,'/stylesheets/shopquery_diy' %>
+  <%= stylesheet_link_tag '/stylesheets/nav' ,'/stylesheets/shopquery_diy' ,'/stylesheets/shoptwoclass_diy' ,
+    '/stylesheets/shopcontent' ,'/stylesheets/comment' %>
+  <%= javascript_include_tag "/javascripts/base" , '/javascripts/common' , '/javascripts/form' ,
+    '/javascripts/blockui' ,'/javascripts/shoplist_roll'  ,'/javascripts/shopcontent'%>
+
+  <%#= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag '/javascripts/jquery.lightbox-0.5.js' %>
+  <%= stylesheet_link_tag "/stylesheets/jquery.lightbox-0.5.css" %>
+
+
+<% end %>
+<script type="text/javascript">
+  $(function() {
+    // Use this example, or...
+    //$('a[@rel*=lightbox]').lightBox(); // Select all links that contains lightbox in the attribute rel
+    // This, or...
+    //$('#gallery a').lightBox(); // Select all links in object with gallery ID
+    // This, or...
+    $('a.lightbox').lightBox({
+      //overlayBgColor: '#FFF',
+      //overlayOpacity: 0.6,
+      imageLoading: '/images/lightbox/lightbox-ico-loading.gif',
+      imageBtnClose: '/images/lightbox/lightbox-btn-close.gif',
+      imageBtnPrev: '/images/lightbox/lightbox-btn-prev.gif',
+      imageBtnNext: '/images/lightbox/lightbox-btn-next.gif',
+      //containerResizeSpeed: 350,
+      txtImage: '商品图片',
+      txtOf: '中'
+    }); // Select all links with lightbox class
+    // This, or...
+    //$('a').lightBox(); // Select all links in the page
+    // ... The possibility are many. Use your creative or choose one in the examples above
+  });
+</script>
+
+<div id="content" style="width: 1002px;  background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+  <!-- 商品二级分类 -->
+
+  <%= render :partial => "/products/left_banner" %>
+
+
+  <!-- 页内图片广告 -->
+  <%= render :partial => "/products/adv" %>
+
+  <!-- 空白边框 -->
+
+  <div id="pdv_5804" class="pdv_class" title="" style="width: 210px; height: 250px; top: 315px; left: 0px; z-index: 11;">
+    <div id="spdv_5804" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 248px; border: 1px solid rgb(223, 223, 223);">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="/" style="line-height: 25px;">更多</a>
+          </div>
+
+        </div>
+        <div style="padding: 0px;">
+          &nbsp;
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 当前位置提示条 -->
+
+  <div id="pdv_5811" class="pdv_class" title="当前位置" style="width: 760px; height: 30px; top: 0px; left: 242px; z-index: 12;">
+    <div id="spdv_5811" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(/images/nav-border-title.jpg) no-repeat scroll 0px 0px transparent;">
+        <div style="float: right; height: 100%; width: 80px; background: url(/images/nav-border-title.jpg) no-repeat scroll -920px 0px transparent;"></div>
+
+        <div id="nav">
+          您现在的位置：<a href="/">首页</a>
+
+          &gt; <a href="/products">商品列表</a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 商品显示 -->
+
+  <div style="width: 760px; height: 528px; top: 50px; left: 242px; z-index: 14;" title="商品详情" class="pdv_class" id="pdv_5826">
+    <div style="overflow: visible; width: 100%;" class="pdv_content" id="spdv_5826">
+      <div style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid;" class="pdv_border">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+		商品详情
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a style="line-height: 25px;" href="http://www.jadejade.cn">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+
+
+          <div id="shopcontent">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody><tr>
+                  <td width="230" valign="top">
+                    <div class="piczone">
+                      <table cellspacing="0" cellpadding="0" align="center">
+                        <tbody><tr>
+                            <td align="center">
+                              <div id="shopview">
+                                <%= link_to  image_tag(@product.first_list_image(:w200h200) ,:style => 'border:0')   ,@product.first_list_image(:original) ,:class => 'lightbox'  %>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody></table>
+                    </div>
+                    <div id="contentpages" style="display: none;"></div>
+                  </td>
+                  <td>
+                    <div id="prodtitle"><%= @product.name %></div>
+                    <div id="prop">
+				编号：<%= @product.serial %><br/>
+				种色：<%= @product.try(:color).try(:name) %><br/>
+				种类：<%= @product.try(:sort).try(:name) %><br/>
+				价格：<%= @product.price %><br/>
+				等级：<%= @product.get_rank %><br/>
+                    </div>
+                    <div style="padding: 5px;">
+			商品售价：<span class="price">￥<%= @product.price %></span><br/>
+                    </div>
+                    <div class="buttonzone">
+
+                      <a href="/products/<%= @product.id %>/buy/"><img border="0" id="addtocart" class="addtocart" alt="订购" src="/images/lijigoumai.jpg">
+                      </a>
+
+                      <a href="/carts/?product=<%= @product.id %>">
+                        <img  border="0" id="addtofav" class="addtofav" alt="加入收藏" src="/images/add_cart.jpg"/>
+                      </a>
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            <br clear="all"/>
+            <!-- 小图片--->
+            <div class="bodyzone"  style="border-top: 1px solid #D4D4D4;">
+              <% @product.product_images.each do |product_image| %>
+                <%= link_to image_tag(product_image.image.url(:w140h140) ,:style => 'border:0') ,product_image.image.url.gsub(/\?\d+/ ,'') ,
+                  :class => 'lightbox' ,
+                  :title => 	"编号：#{@product.serial}<br/>" +
+                  "种色：#{@product.color.name}<br/>" +
+                  "种类：#{@product.sort.name}<br/>" +
+                  "状态：#{@product.get_state }<br/>" +
+                  "等级：#{@product.get_rank}<br/>"
+              %>
+              <% end %>
+
+            </div>
+            <br clear="all"/>
+
+
+            <!--
+            <div class="bodyzone_cap">
+              <div class="bodyzone_cap_left"></div>
+              <div class="bodyzone_cap_now" id="switch_body">商品介绍</div>
+              <div class="bodyzone_cap_list" id="switch_canshu">详细资料</div>
+              <div class="bodyzone_cap_right"></div>
+            </div>
+            -->
+            <div class="bodyzone_cap">
+              <img src="/images/products/product_intro.jpg">
+            </div>
+
+            <div class="bodyzone" id="bodyzone">
+
+              <p>
+                <% @product.product_images.each do |product_image| %>
+                  <%= image_tag( product_image.image.url(:w740h740) ,:style => 'border:0' ,:alt => @product.name)  %>
+                <% end %>
+
+              </p>
+
+              <%= @product.introduction %>
+            </div>
+
+            <p style="clear:both">&nbsp;</p>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+    <p style="clear:both">&nbsp;</p>
+  </div>
+
+  <!--
+
+  <!-- 产品评论-->
+<%#= render :partial => "product_comment" %>
+    <p style="clear:both">&nbsp;</p>
+</div>

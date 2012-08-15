@@ -1,0 +1,2 @@
+module ProductionImagesHelper
+end

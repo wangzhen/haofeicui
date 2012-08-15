@@ -1,0 +1,37 @@
+          <div class="content">
+            <h2 class="title">咨询列表</h2>
+            <div class="inner">
+
+<table class="table">
+  <tr>
+    <th>产品</th>
+    <th>产品名称</th>
+    <th>客户</th>
+    <th>咨询</th>
+    <th>邮件</th>
+    <th>电话</th>
+    <th>回复</th>
+    <th>操作</th>
+
+  </tr>
+
+<% @prodcut_contacts.each do |prodcut_contact| %>
+  <tr>
+        <td>      
+      <%= image_tag(prodcut_contact.product.try(:product_images).try(:first).try(:image).try(:url).to_s, :size=>'60x40') %>
+     </td>
+    <td> <%=link_to   h(prodcut_contact.product.try(:name)) , product_path(prodcut_contact.product) %></td>    
+    <td><%=h prodcut_contact.try(:user).try(:name) %></td>    
+    <td><%=h prodcut_contact.name %></td>
+    <td><%=h prodcut_contact.email %></td>
+    <td><%=h prodcut_contact.phone %></td>
+    <td><%=h prodcut_contact.reply %></td>
+    <td><%= link_to '回复', edit_admin_product_contact_path(prodcut_contact) %>|
+<%= link_to '删除', prodcut_contact, :confirm => 'Are you sure?', :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>
+      <%= will_paginate @prodcut_contacts %>
+<br />
+</div></div>

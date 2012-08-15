@@ -1,0 +1,92 @@
+ja:
+  users:
+    new:
+      title: Sign Up
+      subtitle: 会員登録
+    form:
+      note: "必要項目を入力してください。赤い項目は必須項目です。"
+    create:
+      need_activate: "Emailを送信しました。Emailに記載されているURLにアクセスして会員登録を完了させてください。"
+    update:
+      password_attention: "空の場合は更新されません"
+    activate:
+      after_activate: "会員登録が正常に完了しました。ログインしてお買い物をお続け下さい"
+    edit:
+      subtitle: "登録情報編集"
+  sessions:
+    new:
+      forgot_password: "パスワードを忘れた方"
+      remember_me: "ログイン状態を保存する"
+      subtitle: "会員ログイン"
+      member: "Member 会員"
+      join_now: "Join Now 会員登録"
+      join_text: "商品をご購入する前に会員登録をお済ませください"
+  pages:
+    information:
+      subtitle: "ご利用ガイド"
+  forgotten_passwords:
+    flash:
+      delivered: "パスワード再設定用のEmailを{{email}}に送信しました。Emailに記載されているURLにアクセスください。"
+      email_not_exists: "Emailアドレスが間違っています。"
+      expired: "失敗しました。"
+      completed: "パスワードは正常に変更されました。新しいパスワードでログインしてください。"
+      wrong_reset_code: "there is something wrong when reset your password"
+    new:
+      message: "登録したEmailアドレスを入力してください。"
+
+  orders:
+    new:
+      subtitle: "お買い物画面"
+  mail_common:
+    after_name: "様,"
+    label_company_name: "会社名"
+    company_name: "上海佳若喜貿易有限公司"
+    label_address: "住　所"
+    address: "上海市長寧区武夷路351号208室"
+    name1: "荒谷哲巨 / 金凱"
+    name2: "(Tetsuhiro Aratani / Jin Kai)"
+    label_phone: "電　話"
+    label_fax: "F　A　X"
+  signup:
+    subject: "ユーザ登録手続きについて"
+    msg1: "新規入会手続きありがとうございます。"
+    msg2: "下記リンクをクリックして頂ければ、E-mail確認手続きが完了します。"
+    msg3: "ログインしてお買い物をお続けください。"
+  activation:
+    subject: "ユーザ登録完了のお知らせ"
+    msg1: "この度はcherahbulle WEBにユーザ登録頂きまして、ありがとうございました。"
+    msg2: "下記サイトよりお買い物をお続けください。"
+    msg3: "今後とも宜しくお願い致します。"
+  user_update:
+    subject: "ユーザ情報変更のお知らせ"
+    msg1: "ユーザ情報が正常に変更されました。"
+    msg2: "下のリンクよりログインしてください。"
+    msg3: "今後とも宜しくお願い致します。"
+  forgot_password:
+    subject: "パスワード変更を受け付けました"
+    msg1: "下のリンクよりパスワードを変更してください。"
+    msg2: "今後とも宜しくお願い致します。"
+  reset_password:
+    subject: "パスワード変更のお知らせ"
+    msg1: "パスワードが正常に変更されました。"
+    msg2: "今後とも宜しくお願い致します。"
+  order_ok:
+    subject: "ご注文ありがとうございました。"
+    msg1: "Cerahbulle shopでのお買い物ありがとうございました。"
+    msg2: "ご注文番号"
+    msg3: "を承りました。"
+    msg4: "注文の概要"
+    msg5: "ご注文日時"
+    product_name: "商品名"
+    price: "単価"
+    unit: "数量"
+    tax: "小計"
+    amount: "合計"
+    msg5: "注文者情報"
+    address: "住所"
+    name: "氏名"
+    tel: "電話番号"
+    send_date: "配達希望日"
+    send_time: "配達希望時間帯"
+    msg6: "こちらのメールを保存いただき、お問い合わせ等の際には上記ご注文番号をお伝えください。"
+    msg7: "ありがとうございました。"

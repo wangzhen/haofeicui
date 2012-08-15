@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @color.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @color.description %>
+</p>
+
+<p>
+  <b>Sort:</b>
+  <%=h @color.sort %>
+</p>
+
+
+<%= link_to 'Edit', edit_color_path(@color) %> |
+<%= link_to 'Back', colors_path %>

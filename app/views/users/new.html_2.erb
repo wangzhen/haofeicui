@@ -1,0 +1,126 @@
+
+<div id="box">
+  <div id="block-signup" class="block">
+    <h2>用户注册</h2>
+    
+    <% @user.password = @user.password_confirmation = nil %>
+    <div class="content">
+      <% form_for :user, :url => register_path+'#block-signup'  ,:html => { :class => 'form' ,:multipart => true} do |f| -%>
+        <%= error_messages_for :user %>
+        <div class="group">
+          <div class="left">
+            <%= f.label(:email , User.human_attribute_name("email") ,:class=>"label") %>
+          </div>
+          <div class="right">
+            <%= f.text_field :email,:class=>'text_field' %>
+            <span class="description">请填写您的真实地址，邮件将做为您的登陆ID</span>
+          </div>
+          <div class="clear"> </div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%= f.label :name, User.human_attribute_name("name")  ,:class=>"label" %>
+          </div>
+          <div class="right">
+            <%= f.text_field :name ,:class=>'text_field'%>
+            <span class="description">请填写您的真实商户名称。</span>
+          </div>
+                    <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%= f.label :nickname , User.human_attribute_name("nickname") ,:class=>"label"  %>
+          </div>
+          <div class="right">
+            <%= f.text_field :nickname,:class=>'text_field' %>
+            <span class="description">您的昵称</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%=f.label :password , User.human_attribute_name("password") ,:class=>"label"  %>
+          </div>
+          <div class="right">
+            <%= f.password_field :password,:class=>'text_field' %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%= f.label :password_confirmation , User.human_attribute_name("password_confirmation") ,:class=>"label"  %>
+          </div>
+          <div class="right">
+            <%= f.password_field :password_confirmation,:class=>'text_field' %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%=  f.label :phone , User.human_attribute_name("phone") ,:class=>"label"   %>
+                    
+          </div>
+          <div class="right">
+            <%= f.text_field :phone,:class=>'text_field' %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%= f.label :mobile , User.human_attribute_name("mobile") ,:class=>"label"   %>
+          </div>
+          <div class="right">
+            <%= f.text_field :mobile,:class=>'text_field' %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%=  f.label :address , User.human_attribute_name("address") ,:class=>"label"   %>
+          </div>
+          <div class="right">
+            <%= select_province_city("user",'province_id')%>
+            <%= render :partial=>"/shared/city_select" , :locals=>{:model=>'user' , :cities=>@cities ,:options=>{} ,:html_options=>{}} %>
+            <%= render :partial=>"/shared/district_select" , :locals=>{:model=>'user' , :districts=>@districts ,:options=>{} ,:html_options=>{}} %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left"> 
+          </div>
+          <div class="right">
+            <%= f.text_field :address,:class=>'text_field' %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left"> <%=  f.label :introduction , User.human_attribute_name("introduction") ,:class=>"label"   %>
+          </div>
+          <div class="right">
+            <%= f.text_area :introduction,:class=>'text_field' ,:size => '50x5' %>
+          </div>
+          <div class="clear"></div>
+        </div> 
+        <div class="group">
+          <div class="left"> <%=  f.label :image , User.human_attribute_name("image") ,:class=>"label"   %>
+          </div>
+          <div class="right">
+            <%= f.file_field :image %>
+          </div>
+          <div class="clear"></div>
+        </div> 
+        <div class="group navform" style="text-align:right">
+          <%= submit_tag '提交', :class=>"button" %>
+        </div>
+      
+      <% end -%>
+    </div>
+    
+    
+    
+    
+    
+    
+  </div>
+</div>
+

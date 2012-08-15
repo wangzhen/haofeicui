@@ -1,0 +1,83 @@
+
+<div class="block" id="block-tables">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#">修改用户信息</a></li>
+      <!--
+      <li class=""><a href="#block-tables">Tables</a></li>
+      <li><a href="#block-forms">Forms</a></li>
+      <li><a href="#block-messages">Messages</a></li>
+      <li><a href="#block-forms-2">2 Columns Forms</a></li>
+      <li><a href="#block-lists">Lists</a></li>
+      -->
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <% @user.password = @user.password_confirmation = nil %>
+    <p>   <%= image_tag @user.image.url ,:size =>'240x160' %> </p>
+    <h2 class="title">您的咨询内容为：</h2>
+    <div class="inner">
+      <% form_for @user, :url => '/user' ,:html => { :multipart => true}  do |f| -%>
+        <%= error_messages_for :user %>
+        <table class="table">
+          <tbody>
+          
+            <tr class="odd">
+              <td><%= f.label User.human_attribute_name("email") %></td><td> <%= f.text_field :email %> </td>
+            </tr>
+            <tr class="odd">
+              <td> <%=f.label User.human_attribute_name("password")  %></td><td>  <%= f.password_field :password  %></td>
+            </tr>
+            <tr class="odd">
+              <td><%= f.label User.human_attribute_name("password_confirmation")  %> </td><td> <%= f.password_field :password_confirmation %></td>
+            </tr>
+            <tr class="odd">
+              <td><%= f.label User.human_attribute_name("name")  %> </td><td>     <%= f.text_field :name %>    </td>
+            </tr>  
+            <tr class="even">
+              <td> <%=  f.label User.human_attribute_name("nickname")   %> </td>
+              <td>      <%= f.text_field :nickname %>          </td>
+            </tr>
+            <tr class="even">
+              <td><%=  f.label User.human_attribute_name("introduction")   %> </td>
+              <td>        <%= f.text_field :introduction %>           </td>
+            </tr>
+            <tr class="even">
+              <td> <%=  f.label User.human_attribute_name("phone")   %> </td>
+              <td>        <%= f.text_field :phone %>           </td>
+            </tr>
+            <tr class="even">
+              <td> <%= f.label User.human_attribute_name("mobile")   %> </td>
+              <td>       <%= f.text_field :mobile %>         </td>
+            </tr>
+            <tr class="even">
+              <td> <%= f.label User.human_attribute_name("address")   %> </td>
+              <td>     <%= select_province_city("user",'province_id')%>
+  <%= render :partial=>"shared/city_select" , :locals=>{:model=>'user' , :cities=>@cities ,:options=>{} ,:html_options=>{}} %>
+  <%= render :partial=>"shared/district_select" , :locals=>{:model=>'user' , :districts=>@districts ,:options=>{} ,:html_options=>{}} %>
+        </td>
+            </tr>
+            <tr class="even">
+              <td> <%=  f.label User.human_attribute_name("address")   %> </td>
+              <td>      <%= f.text_field :address %>     </td>
+            </tr>
+            <tr class="even">
+              <td> 个人图像或店标</td>
+              <td>     <%= f.file_field :image %>      </td>
+            </tr>
+            <tr class="even">
+              <td></td>
+              <td>  <%= submit_tag '提交' %>     </td>
+            </tr>
+          </tbody>
+        </table>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  

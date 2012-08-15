@@ -1,0 +1,28 @@
+<% @serial = Time.now.strftime("%Y%m%d%H%M%S") %>
+<% payment_service_for @serial , ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
+  :service => :alipay,
+  :html => { :id => 'payment-form', :method => :get } do |service| %>
+  <% service.discount 0 %>
+  <% service.price @product.price  %>
+  <% service.quantity 1 %>
+  <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+  <% service.notify_url url_for(:only_path => false,:controller=>:products  , :action => 'show' , :id=>@product.id ) %>
+  <% service.return_url url_for(:only_path => false,:controller=>:products  , :action => 'show' , :id=>@product.id ) %>
+  <% service.show_url url_for(:only_path => false,:controller=>:products , :action => 'show' , :id=>@product.id ) %>
+  <% service.body "好翡翠商品product_id:#{@product.id}--name:#{@product.name}-serial:#{@product.serial}" %>
+  <% service.charset "utf-8" %>
+  <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_PARTNER_TRADE_BY_BUYER %>
+  <% service.payment_type 1 %>
+  <% service.subject "订单号：#{@serial}" %>
+  <% service.logistics :type => 'EXPRESS', :fee => 0, :payment => 'BUYER_PAY' %>
+  <%service.buyer_msg '000' %>
+  <% service.receive :name =>@name, :address =>  @address, :zip => 'zip', :phone => @phone, :mobile => @mobile %>
+  <% service.sign %>
+<% end %>
+<%= javascript_include_tag 'jquery' %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#payment-form').submit();
+  });
+</script>

@@ -1,0 +1,70 @@
+<div id="block-lists" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#block-tables">订单信息</a></li>
+    </ul>
+    <div class="clear">   </div>
+  </div>
+  <div class="content">
+    <br id="clear"/>
+    <div class="section section-colorD" style="padding-left: 25px;">
+      <h3 class="section-title">您的订单信息</h3>
+      <div id="order_show">
+        <% unless @order.order_lines.blank? %>
+          <h3>您所购买的商品</h3>
+          <table class="table">
+            <tr id="head">
+              <th>商品名称</th>
+              <th></th>
+              <th>金额</th>
+              <th>个数</th>
+              <th>合计</th>
+            </tr>
+            <% @order.order_lines.each do |line| %>
+              <tr>
+                <td><%= line.try(:product).try(:name) %></td>
+                <td><% if current_user.blank? %>
+                    <%="非会员价格"%>
+                  <%else%>
+                    <%="会员价格"%>
+                  <%end%>
+                </td>
+                <td><%= line.price %></td>
+                <td><%= line.quantity %></td>
+                <td><%= line.subtotal %></td>
+              </tr>
+          
+            <% end %>
+            <tr>
+              <td></td>
+              <td>              </td>
+              <td></td>
+              <td>           
+                <%if @order.mailing_commition%>  
+                  邮送费 : <%= @order.mailing_commition %>
+                <%end%>
+              </td>
+              <td><span style="color:red">合计金额:</span> <%= @order.total %></td>
+            </tr>
+          </table>
+        
+          <p id="total"></p>
+        <% end %>
+                                                                          
+        <p><%= @order.payment %></p>
+        <hr>
+        <h3>收货人信息</h3>
+        <% user_info = [:user_name,:full_city_name,:address,:postal_code,:phone,:mobile,:fax] %>
+        <% user_info.each do |info| %>
+          <p><span style="width: 120px; display: block;float:left;"><%= Order.human_attribute_name(info.to_s) %>：</span><%= @order.send(info) %> &nbsp;</p>
+        <% end %>
+        <h3>其它事项</h3>
+        <% other = %w(delivery_schedule_date delivery_serial user_remark) %>
+        <% other.each do |other_info| %>
+          <p><span  style="width: 120px; display: block;float:left;"><%= Order.human_attribute_name(other_info)%>：</span><%= @order.send(other_info) %>&nbsp;</p>
+        <% end %>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

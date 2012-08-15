@@ -1,0 +1,18 @@
+<p>
+  <b>Comment:</b>
+  <%=h @product_comment.comment %>
+</p>
+
+<p>
+  <b>User price:</b>
+  <%=h @product_comment.user_price %>
+</p>
+
+<p>
+  <b>Ipaddr:</b>
+  <%=h @product_comment.ipaddr %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_comment_path(@product_comment) %> |
+<%= link_to 'Back', product_comments_path %>

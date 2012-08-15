@@ -1,0 +1,2 @@
+page.replace_html "subtotal", number_to_currency(@order.subtotal)
+page.replace_html "total", number_to_currency(@order.total)

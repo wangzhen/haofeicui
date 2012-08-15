@@ -1,0 +1,58 @@
+<div id="sub-content">
+  <div class="block ranking">
+    <h3 class="block-title"><%= t("ranking") %></h3>
+    <script type="text/javascript">
+      function showSubCategory(id)
+      {
+        toggle_ul=document.getElementById(id)
+        if (toggle_ul.style.display=="none"){
+        toggle_ul.style.display="block"
+        }
+        else{
+          toggle_ul.style.display="none"
+        }
+      }
+    </script>
+    <ul id="categories">
+       <% @category_roots.each  do |c| %>
+        <li><span  onclick="showSubCategory('<%=c.id.to_s%>')"><%= Category.human_attribute_name("#{c.name}") %></span>
+          <% category = Category.find(params[:id]) if params[:id]&&controller_name=="categories"%>
+           <% category = @product.try(:category) if params[:id]&&controller_name=="products"&&action_name=='show'%>
+          <ul id=<%=c.id%> style="<%= c.id.to_s == params[:id]||c.public_children.include?(category) ?  '' : 'display:none' %>" >
+         <% c.public_children.each do |cc| %>
+            <li><%= link_to cc.name,category_path(cc) %></li>
+        <% end %>
+          </ul>
+       </li>
+        <% end %>
+    </ul>
+   
+    <div class="block-link"><a href="/categories"><img src="/images/block-link_ranking.gif" alt="" width="122" height="20" /></a></div>
+    <!-- /div.block -->
+  </div>
+  <div class="block contents">
+    <h3 class="block-title"><%= t("content") %></h3>
+    <ul>
+       <li><%= link_to t("ranking"), ranking_products_path %></li>
+        <li><%= link_to t("blog") , "/tops/#blog" %></li>
+        <li><%= link_to t("experience") ,"/articles" %></li>
+    </ul>
+    <!-- /div.block -->
+  </div>
+  <div class="block information">
+<h3 class="block-title"><%= t("message") %></h3>
+<ul>
+        <li><%= link_to t("use") , "/company/guide" %></li>
+        <li><%= link_to t("questions"),"/company/guide/#problem" %></li>
+        <li><%= link_to t("about_us"),"/company/about_us" %></li>
+        <li><%= link_to t("privacy_policy") ,"/company/pricacy_policy"%></li>
+        <li><%= link_to t("contact"), new_contact_path %></li>
+        <li><%= link_to t("present"), "/company/present" %></li>
+</ul>
+<!-- /div.block -->
+</div>
+  <div class="content-link"><a href="#"><img src="/images/content-link_01.jpg" alt="" width="180" height="115" /></a></div>
+  <div class="content-link"><a href="#"><img src="/images/content-link_02.gif" alt="" width="180" height="60" /></a></div>
+  <div class="content-link"><a href="#"><img src="/images/content-link_02.gif" alt="" width="180" height="60" /></a></div>
+  <!-- /div#sub-content -->
+</div>

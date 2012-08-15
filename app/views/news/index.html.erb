@@ -1,0 +1,100 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag '/stylesheets/newsclass_dolphin' ,'/stylesheets/newsquery_diy' %>
+  <%= javascript_include_tag "/javascripts/base" , '/javascripts/common' , '/javascripts/form' ,'/javascripts/blockui' %>
+<% end %>
+
+
+<div id="content" style="width: 1002px;  background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+  <!-- 当前位置提示条 -->
+
+  <div id="pdv_5780" class="pdv_class" title="当前位置" style="width: 760px; height: 30px; top: 0px; left: 242px; z-index: 8;">
+    <div id="spdv_5780" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(/images/nav-border-title.jpg) no-repeat scroll 0px 0px transparent;">
+        <div style="float: right; height: 100%; width: 80px; background: url(/images/nav-border-title.jpg) no-repeat scroll -920px 0px transparent;"></div>
+
+
+        <div id="nav">
+          您现在的位置：<a href="/">首页</a>&gt;<a href="/news">新闻</a>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 文章一级分类 -->
+
+  <div id="pdv_5776" class="pdv_class" title="栏目导航" style="width: 210px; height: 149px; top: 0px; left: 0px; z-index: 9;">
+    <div id="spdv_5776" class="pdv_content" style="overflow: visible; width: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 100%; padding: 0pt; margin: 0pt; background: url(/images/news_left_bg.jpg) repeat-y scroll 0% 0% rgb(249, 249, 249);">
+        <div style="height: 100%; background: url(/images/news_left_bg.jpg) repeat-y scroll right center transparent;">
+          <div style="height: 40px; border: 0px none; padding: 0pt; margin: 0pt; background: url(/images/left-border-title.jpg)  no-repeat scroll 0px 0px transparent;">
+            <div style="float: left; height: 33px; font: 14px/32px Simsun; color: rgb(80, 80, 80); padding: 5px 0px 0px 30px;">栏目导航</div>
+
+            <div style="float: right; height: 40px; width: 16px; background: url(/images/left-border-title.jpg) no-repeat scroll -984px 0px transparent;"></div>
+          </div>
+          <div style="margin: 0px; padding: 0px;">
+            <div class="newsclass_dolphin">
+              <% Category.all.each  do |c|   %>
+                <a href="/news?category_id=<%= c.id %>" target="_self" class="newsclass_dolphin">
+                  <%= c.name   %>
+                </a>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: -9px; height: 9px; line-height: 9px; background: url(/images/left-border-title.jpg)  no-repeat scroll 0px -299px transparent;">&nbsp;</div>
+      <div style="float: right; margin-top: -9px; width: 10px; height: 9px; line-height: 9px; background: url(/images/left-border-title.jpg)  no-repeat scroll -990px -299px transparent;">&nbsp;</div>
+
+    </div>
+  </div>
+
+  <!-- 文章翻页检索 -->
+
+  <div id="pdv_5786" class="pdv_class" title="" style="width: 700px; height: 338px; top: 60px; left: 260px; z-index: 10;">
+    <div id="spdv_5786" class="pdv_content" style="overflow: visible; width: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid;">
+        <div style="height: 25px; margin: 1px; display: none;">
+
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http://jadejade.cn/1284882468/news/class/-1" style="line-height: 25px;">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+
+
+          <div id="newsquery_diy">
+
+            <ul id="queryul">
+
+              <% @articles.each do |article|  %>
+                <li class="title">
+                  <div class="title">
+                    [<%= article.category.name %>] <%= link_to article.title , news_path(article) %>
+                  </div>
+                  <div class="time"><%= article.created_at.to_s(:db) %></div>
+
+                </li>
+
+              <% end %>
+            </ul>
+          </div>
+
+          <%#= will_paginate @articles   %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

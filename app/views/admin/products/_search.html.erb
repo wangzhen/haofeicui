@@ -1,0 +1,29 @@
+<%= form_for  [:admin, @search], :url => url ,:html => {:class => "no-floating form"} do |f| %>
+<% if false %>
+  <table>
+    <% f.fields_for @search.conditions do |product| %>
+      <tr >
+        <td><%= Product.human_attribute_name("name") %> </td><td><%= text_field_tag :name ,params[:name],:size => 15 ,:maxlength => 30 ,:class =>'text_field' %></td>
+        <td><%=  Product.human_attribute_name("serial") %></td><td><%= text_field_tag :serial,params[:serial],:size => 20,:maxlength => 100,:class =>'text_field' %></td>
+        <td><%=  Product.human_attribute_name("sort_id") %></td><td> <%= product.select :sort_id ,[["",""]]+Sort.all.map{|s| [s.name,s.id]} ,:class =>'text_field' %></td>
+      </tr>
+
+      <tr >
+        <td> <%=  Product.human_attribute_name("proved_serial") %></td><td><%= text_field_tag :proved_serial,params[:proved_serial],:size => 15 , :maxlength => 13,:class =>'text_field' %></td>
+        <td><%=  Product.human_attribute_name("state") %><%= product.select :state , [["",""]]+Product::STATE.map { |k,v|[v ,k]  },:class =>'text_field' %></td>
+        <td><%=  Product.human_attribute_name("rank") %><%= product.select :rank , [["",""]]+Product::RANK.map { |k,v|[v ,k]  },:class =>'text_field' %></td>
+
+        <td><%=  Product.human_attribute_name("color_id") %></td>       <td><%= product.select :color_id , [["",""]]+Color.all.map{|c| [c.name ,c.id]},:class =>'text_field' %></td>
+      </tr>
+
+      <tr >
+        <td>关键字查找</td>
+        <td colspan="4"><%= text_field_tag :keywords,params[:keywords],:size => 15 , :maxlength => 13,:class =>'text_field' %></td>
+        <td>    <%= f.submit "查找",:class=>"button" %></td>
+      </tr>
+    <%end%>
+<%end%>
+</table>
+
+<br class="clear"/>
+<% end %>

@@ -1,0 +1,266 @@
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'common' ,'A' ,"A_002" ,"shoplist_roll" ,'shop_search_simple' ,'shopquery_diy' %>
+  <%= stylesheet_link_tag 'nav' ,'shopquery_diy' ,'shoptwoclass_diy' ,'shopcontent' ,'comment' %>
+  <%= javascript_include_tag "base" , 'common'  ,'blockui' ,'shoplist_roll'  ,'shopcontent'%>
+
+<% end %>
+
+
+<div id="content" style="width: 1002px;  background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+  <!-- 商品二级分类 -->
+
+            <%= render :partial => "/products/left_banner" %>
+
+  <!-- 页内图片广告 -->
+
+    <%= render :partial => "/products/adv" %>
+
+  <!-- 空白边框 -->
+
+  <div id="pdv_5804" class="pdv_class" title="" style="width: 210px; height: 250px; top: 315px; left: 0px; z-index: 11;">
+    <div id="spdv_5804" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 248px; border: 1px solid rgb(223, 223, 223);">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http:///" style="line-height: 25px;">更多</a>
+          </div>
+
+        </div>
+        <div style="padding: 0px;">
+          &nbsp;
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 当前位置提示条 -->
+
+  <div id="pdv_5811" class="pdv_class" title="当前位置" style="width: 760px; height: 30px; top: 0px; left: 242px; z-index: 12;">
+    <div id="spdv_5811" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(/images/nav-border-title.jpg) no-repeat scroll 0px 0px transparent;">
+        <div style="float: right; height: 100%; width: 80px; background: url(/images/nav-border-title.jpg) no-repeat scroll -920px 0px transparent;"></div>
+
+        <div id="nav">
+          您现在的位置：<a href="/">首页</a>
+
+          &gt; <a href="/products">商品列表</a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 商品显示 -->
+
+  <div style="width: 760px; height: 528px; top: 50px; left: 242px; z-index: 14;" title="商品详情" class="pdv_class" id="pdv_5826">
+    <div style="overflow: visible; width: 100%;" class="pdv_content" id="spdv_5826">
+      <div style="margin: 0pt; padding: 0pt; height: 100%; border: 0px solid;" class="pdv_border">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+		商品详情
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a style="line-height: 25px;" href="http://www.jadejade.cn">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+
+  <% form_for @cart,:url=>cart_path,:html => {:method=>:put,:id=>'cart_form'} do |f| %>
+          <div id="shopcontent">
+            <%  @cart.items.each do |item| %>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody><tr>
+                  <td width="230" valign="top">
+                    <div class="piczone">
+                      <table cellspacing="0" cellpadding="0" align="center">
+                        <tbody><tr>
+                            <td align="center">
+                              <div id="shopview">
+                                <%=   image_tag(item.product.first_list_image(:w200h200) ,:style => 'border:0') %>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody></table>
+                    </div>
+                    <div id="contentpages" style="display: none;"></div>
+                  </td>
+                  <td>
+                    <div id="prodtitle"><%= item.product.name %></div>
+                    <div id="prop">
+				编号：<%= item.product.serial %><br/>
+				种色：<%= item.product.color.name %><br/>
+				种类：<%= item.product.sort.name %><br/>
+				价格：<%= item.product.price %><br/>
+				等级：<%= item.product.get_rank %><br/>
+				商品售价：<span class="price">￥<%= item.product.price %><br/> </span>
+                    </div>
+                    <div style="padding: 5px;  width: 250px;">
+			
+                          数量：
+                          <%= text_field_tag "items[#{item.id}]", item.quantity, :size => 2, :maxlength => 2 ,:style => '    background: none repeat scroll 0 0 #F7F7F7;
+    border: 1px solid #DDDDDD;    color: #555555;    font-size: 20px;    height: 40px;
+    line-height: 20px;    padding: 0 3px;    width: 40px;' %>
+
+                          <%= link_to "削除",item ,:method => :delete,:confirm => "are you sure to delete?" , :style => 'background: none repeat scroll 0pt 0pt rgb(247, 247, 247);
+                                  border: 1px solid rgb(221, 221, 221);float:right;
+                                  color: rgb(85, 85, 85); font-size: 20px;
+                                  line-height: 40px;margin-left:2px; padding: 0pt 3px; width: 50px; ' %>
+                                                    <input  type="submit" value="修改" style ="background: none repeat scroll 0pt 0pt rgb(247, 247, 247);
+                                  border: 1px solid rgb(221, 221, 221);float:right;
+                                  color: rgb(85, 85, 85); font-size: 20px;
+                                  line-height: 20px; padding: 0pt 3px; width: 50px;
+                                  height: 42px;"/>
+                         <br/>
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            <% end %>
+          </div>
+            <% end %>
+        </div>
+      </div>
+
+                <!-- 小图片--->
+            <div class="bodyzone"  style="border: 1px solid #D4D4D4;">
+
+            <p style="clear:both; width: 500px;   float: right;" >
+                          合计         <%= @cart.subtotal%>
+            </p>
+            <p style="clear:both; width: 530px;" >
+   
+            </p>
+
+            </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- 产品评论-->
+
+  <div style="width: 760px; height: 863px; top: 590px; left: 242px; z-index: 13;" title="商品评论" class="pdv_class" id="pdv_5827">
+    <div style="overflow:visible;width:100%;" class="pdv_content" id="spdv_5827">
+      <div style="margin:0;padding:0;height:100%;border:0px  solid;;" class="pdv_border">
+        <div style="height:25px;margin:1px;display:none;;">
+          <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;font-size:20px">
+		请正确添写以下信息：
+          </div>
+
+        </div>
+        <div style="padding:0px">
+
+
+          <div id="commentForm">
+            <div class="formtitlebg">
+              <div class="formtitle" style="font-size:20px">请正确添写以下信息:</div>
+            </div>
+            <div class="formzone">
+              <div class="noticediv" id="notice"></div>
+              <% form_tag "/carts/alipay/" , :class => "form" , :style => "text-align:left;"do  %>
+
+                <div class="row">
+                  <div class="leftalipay">您的姓名</div>
+                  <div class="con">
+                    <%= text_field_tag :name  , ""  ,:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="leftalipay">您的手机</div>
+                  <div class="con">
+                    <%= text_field_tag :mobile ,"",:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="leftalipay">您的邮件</div>
+                  <div class="con">
+                    <%= text_field_tag :email  ,"",:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="leftalipay">您的电话</div>
+                  <div class="con">
+                    <%= text_field_tag :tel ,"",:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="leftalipay">您的邮编</div>
+                  <div class="con">
+                    <%= text_field_tag :zip ,"",:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="leftalipay">您的地址</div>
+                  <div class="con">
+                    <%= text_field_tag :address ,"",:class =>'alipayinput' %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div style="text-align:left;padding:5px 3px 0px 393px">
+                    <input type="submit" class="alipaysubmit" value="提交" name="Submit"/>
+
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+
+
+
+            <br />
+
+            <div class="formtitlebg">
+              <div class="formtitle" style="font-size:20px">其它支付方式:</div>
+            </div>
+            <br />
+            <p style="font-size:20px">
+              若您不了解以上功能，可以直接至电15000482567咨询 <br />
+              也可以通过银行直接汇款到以下帐户：<br />
+              工商银行：XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
+              招商银行：XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
+              中国银行：XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
+              建设银行：XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
+              深发银行：XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
+              本公司收到汇款后，会及时与您联系！
+
+            </p>
+            <p style="clear:both">
+            </p>
+
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+

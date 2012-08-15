@@ -1,0 +1,26 @@
+<div id="block-tables" class="block">
+    <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#block-text">忘记密码</a></li>
+      <!--
+      <li class=""><a href="#block-tables">Tables</a></li>
+      -->
+    </ul>
+    <div class="clear"></div>
+  </div>
+<div class="content" style="padding:40px;"> 
+
+<% form_for(@forgotten_password) do |f| %>
+  <%= f.error_messages %>
+
+  <p>输入您人邮件箱，我们将发一个链接到您的邮箱</p>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit "提交" %>
+  </p>
+<% end %>
+</div></div>

@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag 'home' ,'base' ,'themes/kathleene/style','user' ,'admin' %>
+<div id="block-tables" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><a href="#block-text">谢谢您的咨询</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <p>我们会以最快的时间以邮件或电话回复您的内容，谢谢您对本站的支持与关注。  </p>
+    <h2 class="title">您的咨询内容为：</h2>
+    <div class="inner">
+      <table class="table">
+        <tbody>
+          
+          <tr class="odd">
+            <td> 姓名： </td><td> <%=h @contact.name %> </td>
+          </tr>
+          <tr class="odd">
+            <td> 电话 ：</td><td>  <%=h @contact.phone %></td>
+          </tr>
+          <tr class="odd">
+            <td> 邮件： </td><td>    <%h= @contact.email %></td>
+          </tr>
+          <tr class="odd">
+            <td> QQ号： </td><td>        <%=h @contact.qq %></td>
+          </tr>  
+          <tr class="even">
+            <td> 咨询： </td><td>      <%=h @contact.content %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

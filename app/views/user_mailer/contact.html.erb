@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'home' ,'base' ,'themes/kathleene/style','user' ,'admin' %>
+<%= root_url %>
+<div id="block-tables" class="block">
+  <div class="content">
+    <h2 class="title">咨询内容为：</h2>
+    <div class="inner">
+      <table class="table">
+        <tbody>
+          
+          <tr class="odd">
+            <td> 姓名： </td><td> <%=h @contact.name %> </td>
+          </tr>
+          <tr class="odd">
+            <td> 电话 ：</td><td>  <%=h @contact.phone %></td>
+          </tr>
+          <tr class="odd">
+            <td> 邮件： </td><td>    <%h= @contact.email %></td>
+          </tr>
+          <tr class="odd">
+            <td> QQ号： </td><td>        <%=h @contact.qq %></td>
+          </tr>  
+          <tr class="even">
+            <td> 咨询： </td><td>      <%=h @contact.content %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

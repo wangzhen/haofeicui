@@ -1,0 +1,48 @@
+
+<% form_for @search,:url => admin_orders_path,:method => :get,:html => {:class => "form"} do |f| %>
+  <% f.fields_for @search.conditions do |order| %>
+    <table class="table">
+      <tr>
+        <td>
+          <%= Order.human_attribute_name("serial") %>
+          <%= text_field_tag :serial,params[:serial],:size => 28 %>
+        </td>
+        <td>
+          <%= Order.human_attribute_name("user_name") %>
+          <%= text_field_tag :name,params[:name],:size => 8 %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= Province.human_name %>
+          <%= order.select :province_id_is ,province_all,{:include_blank => true},:onchange => remote_function(
+            :url =>{:controller=>'/ajax',:action=>"province_select",:model=>"search" ,:replace_city_id =>'search_city_id' ,:replace_district_id =>'search_district_id' }  , 
+            :with=>"'replace_name=search&&province_id='+this.value")%>
+          <%= City.human_name %>
+          <%= order.select :city_id_is,@cities.blank? ? [] : @cities.map{|c|[c.name,c.id]},{:include_blank => true},{:id=>"search_city_id"} %>
+          <%= District.human_name %>
+          <%= order.select :district_id_is,@districts.blank? ? [] : @districts.map{|d|[d.name,d.id]},{:include_blank => true},{:id=>"search_district_id"} %><br/>
+        </td>
+        <td>
+          <%= Order.human_attribute_name("delivery_schedule_date") %>
+          <%= order.calendar_date_select :delivery_schedule_date_gte,:size=>16,:time => :mixed,:year_range=>Time.now.year..Time.now.next_year.year,:popup=>:force,:style=>"margin-right:0px" %>
+          ~
+          <%= order.calendar_date_select :delivery_schedule_date_lte,:size => 16,:time => :mixed,:year_range=>Time.now.year..Time.now.next_year.year,:popup=>:force ,:style=>"margin-right:0px"%>
+                        
+        </td>
+      </tr>
+  
+      <tr  style="text-align:right;padding-right:50px;" >
+        <td>
+        </td>
+        <td style="text-align:right;padding-right:50px;">
+          <%= f.submit t("button.search") ,:class=>'button'%>
+      
+        </td>
+      </tr>
+    </table>
+  <% end %>
+  <p  style="text-align:right;padding-right:50px;" >
+    <%= link_to t("button.new"), new_admin_order_path(:search=>params[:search]), :class => "button" %>
+  </p>
+<% end %>

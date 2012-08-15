@@ -1,0 +1,33 @@
+<p>
+  <b>Order:</b>
+  <%=h @order_lines.order_id %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%=h @order_lines.product_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @order_lines.name %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%=h @order_lines.quantity %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @order_lines.price %>
+</p>
+
+<p>
+  <b>Remarks:</b>
+  <%=h @order_lines.remarks %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_lines_path(@order_lines) %> |
+<%= link_to 'Back', order_lines_path %>

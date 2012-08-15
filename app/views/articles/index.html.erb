@@ -1,0 +1,40 @@
+<div id="block-lists" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <% Category.all.each_with_index do |c, i|  %>
+        <li class="<%= 0==i ? 'first' : ''  %> <%=  c.name == params[:keywords] ? 'active' : '' %>  "><a href="/articles?keywords=<%= c.name   %>"><%= c.name %></a></li>
+      <% end %>
+    </ul>
+    <div class="clear">   </div>
+  </div>            
+  
+  <div class="content">
+    <h1>文章列表</h1>
+    <%=render :partial =>"/articles/search" %>
+    <table class="table" >
+      <tr>
+        <th>分类</th>
+        <th>标题</th>
+        <th>副标题</th>
+        <th>来源</th>
+        <th>作者</th>
+        <th>用户</th>
+        <th></th>
+      </tr>
+      
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%=h article.category.try(:name) %></td>
+          <td><%=h article.title %></td>
+          <td><%=h article.subhead %></td>
+          <td><%=h article.from %></td>
+          <td><%=h article.author %></td>
+          <td><%=h article.user.try(:name) %></td>
+          <td><%= link_to '显示', article_path(article) %>
+  </tr>
+      <% end %>
+    </table>
+      <%= render :partial => "/admin/shared/paginate", :locals => {:objects => @monthstars} %>
+    <br />
+  </div>
+</div>

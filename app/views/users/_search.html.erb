@@ -1,0 +1,46 @@
+
+<% form_for  @search,:html => {:method => :get,:class => "no-floating"} do |f| %>
+  <p>
+    <%= User.human_attribute_name("name") %>
+    <%= text_field_tag :name ,params[:name],:size => 15 ,:maxlength => 30  %>
+    <%=  User.human_attribute_name("email") %>
+    <%= text_field_tag :email,params[:email],:size => 20,:maxlength => 100 %>
+    <%=  User.human_attribute_name("nickname") %>
+    <%= text_field_tag :nickname,params[:nickname],:size => 15 , :maxlength => 13 %><br />
+    <%=  User.human_attribute_name("introduction") %>
+    <%= text_field_tag :introduction,params[:introduction],:size => 15 , :maxlength => 13 %>
+    <%=  User.human_attribute_name("phone") %>
+    <%= text_field_tag :phone,params[:phone],:size => 15 , :maxlength => 13 %>
+    <%=  User.human_attribute_name("mobile") %>
+    <%= text_field_tag :mobile,params[:mobile],:size => 15 , :maxlength => 13 %>
+    <%=  User.human_attribute_name("address") %>
+    <%= text_field_tag :address,params[:address],:size => 15 , :maxlength => 13 %>
+    <% f.fields_for @search.conditions do |user| %>
+      <%= Province.human_name %>
+      <%= user.select :province_id_is ,Province.all.map{|c|[c.name,c.id]},{:include_blank => true},
+        :onchange => remote_function(:url =>{:controller=>'/ajax',:action=>"province_select",
+          :model=>"search" ,:replace_city_id =>'search_conditions_city_id_is',:replace_district_id =>'search_conditions_district_id_is'}  ,
+        :with=>"'province_id='+this.value")%>
+      <%= City.human_name %>
+      <%= user.select :city_id_is,@cities.blank? ? [] : @cities.map{|c|[c.name,c.id]},{:include_blank => true} ,
+        :onchange => remote_function(:url =>{:controller=>'/ajax',:action=>"city_select",:model=>"search" ,
+          :replace_district_id =>'search_conditions_district_id_is'}  ,
+        :with=>"'city_id='+this.value") %>
+      <%= District.human_name %>
+       <%= user.select :district_id_is,@districts.blank? ? [] : @districts.map{|d|[d.name,d.id]},{:include_blank => true} %><br/>
+       <%= Role.human_name %>
+       <%user.fields_for user.object.roles do |role|%>
+        <%#= role.text_field :name_like %>
+        <%= role.select :id_is ,Role.all.each.map{|r| [r.name,r.id]},{:include_blank=>true} %>
+      <%end%>
+
+          <% Role.all.each do |role| %>
+            <%= check_box_tag "[role][]",role.id , params[:role].blank? ? false : params[:role].include?(role.id.to_s) %><%= role.name %>
+          <% end %>
+
+    <%end%>
+  </p>
+  <p class="buttons">
+    <%= f.submit "查找",:class=>"button" %>
+  </p>
+<% end %>

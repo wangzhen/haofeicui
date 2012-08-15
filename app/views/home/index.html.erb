@@ -1,0 +1,202 @@
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag '/stylesheets/common' ,'/stylesheets/A' ,"/stylesheets/A_002" ,
+    "/stylesheets/shoplist_roll" ,'/stylesheets/shop_search_simple' ,'/stylesheets/shoptwoclass_diy' %>
+  <%= javascript_include_tag '/javascripts/swfobject' , "/javascripts/base" ,
+    '/javascripts/common' , '/javascripts/form' ,'/javascripts/blockui' ,'/javascripts/shoplist_roll'%>
+
+<% end %>
+<div id="content" style="width: 1002px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;">
+
+
+  <!-- 空白边框 -->
+
+  <div id="pdv_5626" class="pdv_class" title="" style="width: 210px; height: 250px; top: 315px; left: 0px; z-index: 1;">
+    <div id="spdv_5626" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 248px; border: 1px solid rgb(223, 223, 223);">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http://www.jadejade.cn" style="line-height: 25px;">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+          &nbsp;
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 轮播广告(JS) -->
+
+  <div id="pdv_5622" class="pdv_class" title="" style="width: 776px; height: 308px; top: 0px; left: 226px; z-index: 9;">
+    <div id="spdv_5622" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 306px; border: 1px solid rgb(223, 223, 223);">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http://www.jadejade.cn" style="line-height: 25px;">更多</a>
+          </div>
+        </div>
+        <div style="   padding: 18px 4px 4px;">
+          <div id="swfContent1"></div>
+          <script type="text/javascript">
+            var xmlData="<list><item><img>/images/ads/1.jpg</img><title>蓝水飘花佛</title><title2>时尚贵气质尽显个性独特！</title2><url>/products/1</url><target>_blank</target></item>\n\
+          <item><img>/images/ads/2.jpg</img><title>冰种事事如意</title><title2>特级翡翠仅此一件，绝佳藏品</title2><url>/products/2</url><target>_blank</target></item>\n\
+          <item><img>/images/ads/3.jpg</img><title>冰种小佛</title><title2>冰种小佛</title2><url>/products/3</url><target>_blank</target></item>\n\
+          <item><img>http://haofeicui.com/images/ads/4.jpg</img><title>玻璃种观音</title><title2>天然翡翠事业有成珍藏</title2><url>/products/4</url><target>_blank</target></item>\n\
+          <item><img>http://haofeicui.com/images/ads/5.jpg</img><title>冰种三色珠子项链</title><title2>欢喜福寿幸福无限</title2><url>/products/5</url><target>_blank</target></item></list>";
+            var flashvars = {xmlData:xmlData};
+            var params = {menu:false};
+            var attributes = {};
+            swfobject.embedSWF("/lrtk.swf", "swfContent1", "763", "273", "9","flash1/expressInstall.swf", flashvars, params, attributes);
+          </script>
+
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div style='display:none'>
+    <img src='/images/ads/1.jpg' />
+    <img src='/images/ads/2.jpg' />
+    <img src='/images/ads/3.jpg' />
+    <img src='/images/ads/4.jpg' />
+    <img src='/images/ads/5.jpg' />
+  </div>
+
+  <!-- 自选商品列表 -->
+
+  <div id="pdv_3743" class="pdv_class" title="" style="width: 776px; height: 250px; top: 315px; left: 226px; z-index: 10;">
+    <div id="spdv_3743" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="border: 0px none; height: 250px; padding: 0pt; margin: 0pt;">
+        <div style="height: 31px; border: 0px none; padding: 0pt; margin: 0pt; background: url(/images/top_tuijian_title.jpg) no-repeat scroll 0px 0px transparent;">
+          <div style="float: right; height: 31px; width: 78px; background: url(/images/top_tuijian_title.jpg) no-repeat scroll -922px 0px transparent;"></div>
+        </div>
+        <div style="margin: 0px; padding: 0px;">
+          <div class="shoplistx">
+            <div class="rollshoplists">
+              <div class="blkshoplistx">
+                <div class="LeftButton" id="LeftArr1"></div>
+                <div class="Cont" id="ISL_Cont_11" style="overflow: hidden; width: 760px;">
+                  <div style="float: left;">
+                    <% @products.each do  |product|%>
+                      <div class="box">
+                        <div class="fang" style="width: 140px; height: 140px;">
+                          <div class="picFit" style="width: 140px; height: 140px;">
+                            <%= link_to image_tag(product.first_list_image(:w140h140),:style =>  'border:0;  vertical-align: middle;' ,:alt => product.name) , product_path(product)  ,:style => 'width: 140px; height: 140px;  display:table-cell !important;
+display: block;font:140px/1 Arial ; text-align: center;  vertical-align: middle;' %>
+                          </div>
+                        </div>
+                        <div class="title">
+                          <%= link_to product.name , product_path(product) %>
+                        </div>
+                        <span class="price"><span style="color: rgb(136, 136, 136);">￥</span><%= product.price %></span>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="RightButton" id="RightArr1"></div>
+                <script language="javascript" type="text/javascript">
+                  <!--//--><![CDATA[//><!--
+                  var scrollPic_03 = new ScrollPic();
+                  scrollPic_03.scrollContId   = "ISL_Cont_11"; //内容容器ID
+                  scrollPic_03.arrLeftId      = "LeftArr1";//左箭头ID
+                  scrollPic_03.arrRightId     = "RightArr1"; //右箭头ID
+
+                  scrollPic_03.frameWidth     = 760;//显示框宽度
+                  scrollPic_03.pageWidth      = 152; //翻页宽度
+
+                  scrollPic_03.speed          = 10; //移动速度(单位毫秒，越小越快)
+                  scrollPic_03.space          = 10; //每次移动像素(单位px，越大越快)
+                  scrollPic_03.autoPlay       = true; //自动播放
+                  scrollPic_03.autoPlayTime   = 3; //自动播放间隔时间(秒)
+
+                  scrollPic_03.initialize(); //初始化
+
+                  //--><!]]>
+                </script>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 商品二级分类 -->
+
+  <%= render :partial => "/products/left_banner" %>
+
+  <!-- 页内图片广告 -->
+
+  <div id="pdv_5624" class="pdv_class" title="" style="width: 198px; height: 116px; top: 321px; left: 6px; z-index: 12;">
+    <div id="spdv_5624" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 116px; border: 0px solid;">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http://www.jadejade.cn" style="line-height: 25px;">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+
+
+
+
+          <a href="http://www.jadejade.cn"><img src="/images/1284450704.jpg" border="0" width="100%"></a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 页内图片广告 -->
+
+  <div id="pdv_5625" class="pdv_class" title="" style="width: 198px; height: 116px; top: 443px; left: 6px; z-index: 13;">
+    <div id="spdv_5625" class="pdv_content" style="overflow: hidden; width: 100%; height: 100%;">
+      <div class="pdv_border" style="margin: 0pt; padding: 0pt; height: 116px; border: 0px solid;">
+        <div style="height: 25px; margin: 1px; display: none;">
+          <div style="float: left; margin-left: 12px; line-height: 25px; font-weight: bold;">
+
+          </div>
+          <div style="float: right; margin-right: 10px; display: none;">
+            <a href="http://www.jadejade.cn" style="line-height: 25px;">更多</a>
+          </div>
+        </div>
+        <div style="padding: 0px;">
+
+
+
+
+          <a href="http://www.jadejade.cn"><img src="/images/1284450730.jpg" border="0" width="100%"></a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+      <p style="clear:both">&nbsp;</p>
+</div>
+
+          <script>
+            $(function() {
+           //   $().picFit("auto");
+            });
+          </script>

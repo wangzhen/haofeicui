@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  history.forward(1);
+</script>
+<div id="main-visual">
+  <img src="/images/shoppingcart.jpg" alt=""  />
+</div>
+  <div id="shopping">
+    <ul>
+      <li style="width:100px"><%=image_tag("/images/order1-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li><%=image_tag("/images/order2-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li><%=image_tag("/images/order3-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li><%=image_tag("/images/order4-b.gif")%></li><li id="image"><img src="/images/arrow_gray.png" alt=""/></li>
+      <li style="width:90px"><%=image_tag("/images/order5-a.gif")%></li>
+    </ul>
+  </div><br id="clear"/>
+  <div class=" payment section section-colorD">
+<h2 class="section-title heading-level3" style="text-align:left">完了</h2>
+<h3 style="text-align:left ;padding-left:40px ;color:#bba27a;">订货成功，非常感谢使用！</h3>
+<ul>
+<li style="text-align:left ;padding-left:60px">订货成功，非常感谢使用</li>
+<li style="text-align:left ;padding-left:60px">订单号码是号「<%= @order.serial %>」</li>
+<li style="text-align:left ;padding-left:60px">请牢记订单号码，有什么问题咨询的时候需要订单号。</li>
+</ul>
+<p style="text-align:center"><%= link_to image_tag("/images/back-home.jpg"),root_path %></p>
+  </div>

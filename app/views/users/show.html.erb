@@ -1,0 +1,58 @@
+<div id="block-text" class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="active first"><a href="#block-text"><%= @user.name %></a></li>
+      <li><a href="/products?keywords=<%= to_seo(@user.name.to_s) %>">查看用户翡翠</a></li>
+      <li><%unless @user0.blank?%><%=link_to '上一用户',user_path(@user0.first.id.to_s + '-' + @user0.first.name ) %> <%end%></li>
+      <li><%unless @user2.blank?%><%=link_to '下一用户',user_path(@user2.first.id.to_s + '-' + @user2.first.name ) %><%end%></li>
+      
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= @user.name %></h2>
+    <div class="inner">
+      <p class="first">
+        <%= image_tag(@user.try(:image).try(:url).to_s , :size=>'240x160') %>
+      </p>
+      <p>
+        <b>商户:</b>
+        <%=h @user.name %>
+      </p>
+      <p>
+        <b>邮件:</b>
+        <%=h @user.email %>
+      </p>
+      <p>
+        <b>电话</b>
+        <%=h @user.phone %>
+      </p>
+      <p>
+        <b>手机</b>
+        <%=h @user.mobile %>
+      </p>
+      <p>
+        <b>地址</b>
+        <%=h @user.try(:province).try(:name) %><%=h @user.try(:city).try(:name) %>
+        <%=h @user.try(:district).try(:name) %><%=h @user.try(:address) %>
+      </p>
+      <p>
+        <b>介绍:</b>
+        <%=h @user.introduction %>
+      </p>
+      <hr/>
+ <p> <span class="gray">为了维护广大消费者、卖家、收藏家、专家等的广大利益，请留下您的真实信息，对于不真实的信息对将给于删除，并且封掉ip地址，
+ 同时网站只展示翡翠A货对于以次充好的卖家将给于删除，欢迎大家举报，对于欺骗消费者的用户将移交给公安处理。</span></p>
+
+      <p>
+      <!--
+      <p> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</span></p>
+      <p> <span class="gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</span></p>
+      <hr/>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <span class="hightlight">Excepteur sint occaecat cupidatat non proident</span>, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      -->
+    </div>
+  </div>
+</div>

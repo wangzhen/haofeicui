@@ -1,0 +1,116 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'A','A_002' ,'pagetitlemenu_dolphin' ,'reg' , 'nav' ,'comment' ,'shop_search_simple' %>
+  <%= javascript_include_tag "base" , 'common' , 'form' ,'blockui' ,'comment'  %>
+  <%= stylesheet_link_tag 'memberlogin' %>
+  <%= javascript_include_tag "login"   %>
+<% end %>
+
+<div style="width: 1002px; height: 341px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;" id="content">
+
+
+<!-- 网页标题(菜单) -->
+
+  <%= render :partial => "/home/left" %>
+
+<!-- 会员登录表单(大) -->
+
+<div style="width: 685px; height: 62px; top: 60px; left: 272px; z-index: 9;" title="会员登录" class="pdv_class" id="pdv_6230">
+<div style="overflow:visible;width:100%;" class="pdv_content" id="spdv_6230">
+<div style="margin:0;padding:0;height:100%;border:0px  solid;" class="pdv_border">
+	<div style="height:25px;margin:1px;display:none;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;">
+		会员登录
+		</div>
+		<div style="float:right;margin-right:10px;display:none">
+		<a style="line-height:25px;" href="-1">更多</a>
+		</div>
+	</div>
+<div style="padding:0px">
+
+<div style="width:600px;text-align:left;border:1px #D5E7F4 solid; background-color:#F3F8FC;padding:30px;margin:0px">
+<div style="width:210px;float:left;text-align:left;border:1px #D5E7F4 solid;padding:20px;background-color:#ffffff;">
+    <%= form_tag sessions_path ,:class =>'form'do -%>
+<div class="noticediv" id="notice"></div>
+
+  <table width="100%" cellspacing="0" cellpadding="3" border="0">
+    <tbody><tr>
+      <td width="80">登录账号</td>
+      <td><%= text_field_tag 'email', @login ,:class=>"text_field"%>   </td>
+    </tr>
+    <tr>
+      <td width="80">登录密码</td>
+      <td><%= password_field_tag 'password', nil ,:class=>"text_field" %></td>
+    </tr>
+
+    <tr>
+      <td width="80"></td>
+      <td><input type="image" border="0" src="/images/denglu.gif" name="imageField"/>
+        
+<a style="padding-left:1px" href="/user/new"><img width="40" height="19" border="0" src="/images/zhuce.gif"></a></td>
+    </tr>
+  </tbody></table>
+
+
+
+
+    <% end -%>
+</div>
+
+
+<div style="width:290px;padding:20px;float:right;text-align:left;border:1px #D5E7F4 solid;background-color:#ffffff;">
+<ul style="margin:0px;padding:0px">
+<li style=" list-style-type: none;line-height:30px; background:url(../member/templates/images/cateitems.gif) left no-repeat;padding-left:20px">
+如果您已经是会员，请在左侧登录
+</li>
+
+<li style="list-style-type: none;line-height:30px; background:url(../member/templates/images/cateitems.gif) left no-repeat;padding-left:20px">
+如果您还没有注册会员，<a href="../member/reg.php"><font color="#FF6600">点这里注册新会员</font></a>
+</li>
+
+
+<li style="list-style-type: none;line-height:30px; background:url(../member/templates/images/cateitems.gif) left no-repeat;padding-left:20px">
+如果您忘记了密码， <a href="../member/lostpass.php"><font color="#99CC00">点这里重设一个密码</font></a>
+</li>
+<li style="list-style-type: none;line-height:30px; background:url(../member/templates/images/cateitems.gif) left no-repeat;padding-left:20px">
+  &nbsp;
+</li>
+
+
+
+</ul>
+
+</div>
+  <p style="clear:both"></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 当前位置提示条 -->
+
+<div style="width:760px;height:30px;top:0px;left:242px; z-index:9" title="当前位置" class="pdv_class" id="pdv_6242">
+<div style="overflow:hidden;width:100%;height:100%" class="pdv_content" id="spdv_6242">
+<div style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(&quot;/images/nav-border-title.jpg&quot;) no-repeat scroll 0px 0px transparent;" class="pdv_border">
+<div style="float:right;height:100%;width:80px;background:url(/images/nav-border-title.jpg) -920px 0px no-repeat;"></div>
+
+<div id="nav">
+您现在的位置：<a href="../">翡翠品牌专卖店</a>
+
+&gt; <a href="../member/">会员中心</a>
+
+&gt; 会员注册
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+</div>

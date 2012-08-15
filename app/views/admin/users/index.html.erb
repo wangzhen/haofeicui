@@ -1,0 +1,39 @@
+<div class="content">
+<h1>所有用户管理</h1>
+<%=render :partial =>"/admin/users/search" %>
+<table class="table"><tr>
+    <th><%= order_by_link  :email  , :text=>User.human_attribute_name("email") %></th>
+    <th><%= order_by_link  :name  , :text=>User.human_attribute_name("name") %></th>
+    <th><%= order_by_link  :nickname  , :text=>User.human_attribute_name("nickname")%></th>
+    <th><%= order_by_link  :phone  , :text=>User.human_attribute_name("phone")%></th>
+    <th><%= order_by_link  :mobile  , :text=>User.human_attribute_name("mobile") %></th>
+    <th><%= order_by_link  [:province=>:name]  , :text=>Province.human_name %></th>
+    <th><%= order_by_link  [:city=>:name] , :text=>City.human_name %></th>
+    <th><%= order_by_link  [:district=>:name]  , :text=>District.human_name %></th>
+    <th><%= order_by_link  [:roles=>:name]  , :text=>Role.human_name %></th>
+    <th>操作</th>
+
+  </tr>
+  <% @users.each do |user|%>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%=  user.nickname%></td>
+      <td><%=  user.phone%></td>
+      <td><%= user.mobile %></td>
+      <td><%= user.try(:province).try(:name) %></td>
+      <td><%=user.try(:city).try(:name) %></td>
+      <td><%= user.try(:district).try(:name) %></td>
+      <td><% user.roles.each do |role|%>
+          <%=role.name%>
+        <%end %>
+      </td>
+      <td style=""><%=link_to "修改" , edit_admin_user_url(user) %> <br />
+      <%=link_to "删除" , admin_user_url(user)  ,:method=>:delete , :confirm => "are you sure?" %></td>
+    </tr>
+  <%end %>
+
+
+
+</table>
+</div>

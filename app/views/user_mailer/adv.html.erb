@@ -1,0 +1,24 @@
+当今的社会时尚中，不乏喜佩玉饰的雅士。
+这类人多具书卷气，他们所以选择玉饰，固然由于它别具一格的文化意蕴，
+优雅含蓄的东方韵味，可能还因玉石本身的保健作用。据说研究表明，玉石能产生静电效应，
+使人体发出谐振，它含有的许多微量元素，也可通过皮肤被人体吸收，从而醒脑提神，消炎解毒。
+恍惚记得贾宝玉戴的那块石头上，就镌着除邪疗疾的字样。现代科研和古典名著的暗合，也许又为红学家提供了新的谈资。
+如果您想购买翡翠请联系我们 ，欢迎您来购买我们的商品
+联系QQ：358631733
+联系QQ：1417010580
+联系QQ：601250996
+联系电话：0871-8043568
+<br /><br />
+<% @products.each_with_index  do|p,index| %>
+  <table border="0" style=" <%= (index+1)%4==0  ? '' :  'float:left'  %>">
+    <tr>
+      <td><%= link_to(image_tag("http://www.jadejade.cn"+p.first_list_image ,:size=>"120x90") , "http://www.jadejade.cn"+product_path(p.id.to_s + '-'+ p.name)  )%>
+        <br />
+        <%= p.name %>
+        <br />
+        <%= p.price %>
+      </td>
+    </tr>
+  </table>
+<%end%>
+

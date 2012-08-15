@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @sort.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @sort.description %>
+</p>
+
+<p>
+  <b>Sort:</b>
+  <%=h @sort.sort %>
+</p>
+
+
+<%= link_to 'Edit', edit_sort_path(@sort) %> |
+<%= link_to 'Back', sorts_path %>

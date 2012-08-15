@@ -1,0 +1,120 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'A','A_002' ,'pagetitlemenu_dolphin' ,'reg' , 'nav' ,'comment' ,'shop_search_simple' %>
+  <%= javascript_include_tag "base" , 'common' , 'form' ,'blockui' ,'comment'  %>
+<% end %>
+
+
+<div style="width: 1002px;  background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto;" id="content">
+
+
+<!-- 网页标题(菜单) -->
+
+  <%= render :partial => "/home/left" %>
+
+<!-- 当前位置提示条 -->
+
+<div style="width:760px;height:30px;top:0px;left:242px; z-index:9" title="当前位置" class="pdv_class" id="pdv_6242">
+<div style="overflow:hidden;width:100%;height:100%" class="pdv_content" id="spdv_6242">
+<div style="border: 0px none; height: 30px; padding: 0pt; margin: 0pt; background: url(&quot;/images/nav-border-title.jpg&quot;) no-repeat scroll 0px 0px transparent;" class="pdv_border">
+	<div style="float:right;height:100%;width:80px;background:url(/images/nav-border-title.jpg) -920px 0px no-repeat;"></div>
+
+
+<div id="nav">
+您现在的位置：<a href="../">翡翠品牌专卖店</a>
+
+&gt; <a href="../member/">会员中心</a>
+
+&gt; 会员注册
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- 会员注册 -->
+
+<div style="width: 760px; height: 304px; top: 60px; left: 242px; z-index: 10;" title="会员注册" class="pdv_class" id="pdv_6241">
+<div style="overflow:visible;width:100%;" class="pdv_content" id="spdv_6241">
+<div style="margin:0;padding:0;height:100%;border:0px  solid;" class="pdv_border">
+	<div style="height:25px;margin:1px;display:none;">
+		<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;">
+		会员注册
+		</div>
+
+	</div>
+<div style="padding:0px">
+<div id="reg">
+<div class="stepname" id="stepname"><ul><li class="stepnow">申请登录账号</li></ul>
+  <li class="step">邮件激活</li>
+<li class="step">会员资料设置</li>
+  <li class="step">完成注册</li></div>
+<div class="zone">
+
+    <% @user.password = @user.password_confirmation = nil %>
+     <% form_for :user, :url => register_path+'#block-signup'  ,:html => { :class => 'form' ,:multipart => true} do |f| -%>
+        <%= error_messages_for :user %>
+<div class="noticediv" id="notice"></div>
+<div class="row">
+	<div class="left">电子邮件：</div> <div class="mustfill">*</div>
+	<div class="con">
+         <%= f.text_field :email,:class=>'input' %>
+        <span class="msgdiv" id="chkEmail">请输入正确的电子邮件</span>
+	</div>
+</div>
+
+
+
+
+<div class="row">
+	<div class="left">登录密码：</div> <div class="mustfill">*</div>
+	<div class="con">
+          <%= f.password_field :password,:class=>'input' %>
+        <span class="msgdiv" id="chkPass">登录密码由5-20个英文字母或数字组成</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="left">重复密码：</div> <div class="mustfill">*</div>
+	<div class="con">
+         <%= f.password_field :password_confirmation,:class=>'input' %>
+        <span class="msgdiv" id="chkRepass">请重复输入和上面相同的密码</span>
+	</div>
+</div>
+
+
+
+<div style="margin:10px 0px" class="row">
+	<div class="left"></div> <div class="mustfill"></div>
+	<div class="con">
+	<input type="checkbox" value="1" id="tongyi" />
+	&nbsp;同意会员注册协议 &nbsp;
+	</div>
+</div>
+
+
+<div style="margin:10px 0px" class="row">
+	<div class="left"></div> <div class="mustfill"></div>
+	<div class="con">
+         <%= submit_tag '提交', :class=>"button" %>
+	 </div>
+</div>
+
+
+      <% end -%>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<style>
+  #errorExplanation , #errorExplanation li, #errorExplanation p {
+    color:blue;
+  }
+</style>

@@ -1,0 +1,16 @@
+1:
+  id: 1
+  name: 手镯
+  description: 手镯
+  sort:      1
+2:
+  id: 2
+  name: 挂件
+  description: 挂件
+  sort: 2
+
+3:
+  id: 3
+  name: 佛
+  description: 挂件
+  sort: 3
