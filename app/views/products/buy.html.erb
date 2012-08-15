@@ -128,7 +128,7 @@
     <div style="overflow:visible;width:100%;" class="pdv_content" id="spdv_5827">
       <div style="margin:0;padding:0;height:100%;border:0px  solid;;" class="pdv_border">
         <div style="height:25px;margin:1px;display:none;;">
-          <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;font-size:20px">
+          <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;font-size:20px;display:none;">
 		请正确添写以下信息：
           </div>
 
@@ -136,9 +136,9 @@
         <div style="padding:0px">
 
 
-          <div id="commentForm">
-            <div class="formtitlebg">
-              <div class="formtitle" style="font-size:20px">请正确添写以下信息:</div>
+          <div id="commentForm" >
+            <div class="formtitlebg" style="display:none;">
+              <div class="formtitle" style="font-size:20px;">请正确添写以下信息:</div>
             </div>
             <div class="formzone">
               <div class="noticediv" id="notice"></div>
@@ -201,16 +201,21 @@
             <br />
 
             <div class="formtitlebg">
-              <div class="formtitle" style="font-size:20px">其它支付方式:</div>
+              <div class="formtitle" style="font-size:20px">支付方式:</div>
             </div>
             <br />
-            <p style="font-size:20px">
-              若您不了解以上功能，可以直接至电15000482567咨询 <br />
-              也可以通过银行直接汇款到以下帐户：<br />
-              工商银行：4580 6921 9159 8345 户名：王顺来<br />
-              本公司收到汇款后，会及时与您联系！
+     
 
-            </p>
+                     <h3>支付宝收款</h3>
+                 <p>　<%= link_to 'https://me.alipay.com/vwangzhen' , 'https://me.alipay.com/vwangzhen' ,:style =>'color:red' %></p>
+
+                <h3>工商银行收款</h3>
+                 <p>用户名:   王顺来
+                    <br/>
+                    <br/>
+                  帐  号:    458 069 219 159 0345(工商银行无手续费，请注明收款说明)</p>
+
+            </div>
             <p style="clear:both">
             </p>
 
@@ -224,4 +229,4 @@
     </div>
 
   </div>
-</div>
+ 
