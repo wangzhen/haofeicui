@@ -141,7 +141,8 @@ overflow: hidden;
 }
 
 div.shopquery{
-width:240px;
+/*width:240px;*/
+width:186px;
 height:248px;
 margin:0px 0px 0px -1px;
 padding:20px 0px 0px 0px;
@@ -157,7 +158,9 @@ div.shopquery div.fang{
 border:1px #ebebeb solid;
 text-align:center;
 padding:3px;
-margin:0px 0px 8px 15px;
+/*margin:0px 0px 8px 15px;*/
+/*bywangzhen*/
+margin:0px 0px 8px 10px;
 }
 
 div.shopquery div.picFit{
