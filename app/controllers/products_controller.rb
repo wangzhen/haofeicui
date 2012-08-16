@@ -3,9 +3,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
   def index
-    @title = '世代景星珠宝城 - 好翡翠精品-时尚手镯挂件佛观音等玻璃种好翡翠'
-    @keywords ='世代景星珠宝 翡翠 手镯 挂件 佛 观音 玻璃种'
-    @description ='世代景星珠宝城专卖时尚手镯挂件佛观音等玻璃种翡翠，并为广大翡翠友提供翡翠交流，出售平台'
+    @title = '世代景星珠宝城  翡翠精品 时尚手镯挂件佛观音等玻璃种翡翠尽在　好翡翠网站'
+    @keywords ='世代景星珠宝 翡翠 手镯 挂件 佛 观音 玻璃种 好翡翠'
+    @description ='世代景星珠宝城专卖时尚手镯挂件佛观音等玻璃种翡翠，时尚手镯挂件佛观音等玻璃种翡翠尽在好翡翠网站'
     @search = Product.search(params[:search])
 #    unless params[:name].blank?
 #      name = split_keyword(params[:name])
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 #      end
 #    end
 #    @products = @search.all.paginate(:page => params[:page]||1 , :per_page => params[:per_page]||21)
-    @products = @search.page(params[:page] || 1).per(10).order('id desc')
+    @products = @search.page(params[:page] || 1).per(16).order('id desc')
     
 #    @title = " #{@products.try(:first).try(:color).try(:name)}#{@products.try(:first).try(:name)}#{@products.try(:first).try(:sort).try(:name)}#{params[:keywords]} "
 #    @keywords ="#{@products.try(:first).try(:name)} #{@products.try(:first).try(:sort).try(:name)} #{@products.try(:first).try(:color).try(:name)} #{params[:keywords]} "
