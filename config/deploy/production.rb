@@ -1,8 +1,8 @@
 #http://02.jadejade.cn/
 set :deploy_to, "/home/wangzhen/www/haofeicui.com"
-role :app, "66.175.218.208"
-role :web, "66.175.218.208"
-role :db,  "66.175.218.208", :primary => true
+role :app, "50.116.15.168"
+role :web, "50.116.15.168"
+role :db,  "50.116.15.168", :primary => true
 default_run_options[:pty] = true
 
 
